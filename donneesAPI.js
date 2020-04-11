@@ -89,10 +89,3 @@ request.then(response => {
     .catch(error => {
         console.log(error)
     })
-
-
-mesArbres = response.data.records;
-const arbresDeMoinsDe6 = mesArbres.filter(a => a.fields.hauteurenm < 6)
-console.log(arbresDeMoinsDe6)
-const lesPlatanes = mesArbres.filter(a => a.fields.libellefrancais === "Platane").map(p => p.fields.hauteurenm)
-console.log(lesPlatanes)
