@@ -11,15 +11,15 @@ let pos;
 request.then(response => {
 
         //libelle
-        response.data.records.forEach(e => {
+        response.records.forEach(e => {
             if (libelle[e.fields.libellefrancais] === undefined) {
                 libelle[e.fields.libellefrancais] = 1
             } else {
                 libelle[e.fields.libellefrancais] = libelle[e.fields.libellefrancais] + 1
             }
         })
-        let keyLibelle = console.log(Object.keys(libelle))
-        let valueLibelle = console.log(Object.values(libelle))
+        let keyLibelle = Object.keys(libelle)
+        let valueLibelle = Object.values(libelle)
 
         valueLibelle.forEach(e => {
             if (e < 1000) {
@@ -31,30 +31,30 @@ request.then(response => {
 
 
         //localisation
-        response.data.records.forEach(e => {
+        response.records.forEach(e => {
             if (localisation[e.fields.arrondissement] === undefined) {
                 localisation[e.fields.arrondissement] = 1
             } else {
                 localisation[e.fields.arrondissement] = localisation[e.fields.arrondissement] + 1
             }
         })
-        let keyLoc = console.log(Object.keys(localisation))
-        let valueLoc = console.log(Object.values(localisation))
+        let keyLoc = Object.keys(localisation)
+        let valueLoc = Object.values(localisation)
 
         //domanialite
-        response.data.records.forEach(e => {
+        response.records.forEach(e => {
             if (domaine[e.fields.domanialite] === undefined) {
                 domaine[e.fields.domanialite] = 1
             } else {
                 domaine[e.fields.domanialite] = domaine[e.fields.domanialite] + 1
             }
         })
-        let keyDomaine = console.log(Object.keys(domaine))
-        let valueDomaine = console.log(Object.values(domaine))
+        let keyDomaine = Object.keys(domaine)
+        let valueDomaine = Object.values(domaine)
 
 
         //hauteur
-        response.data.records.forEach(e => {
+        response.records.forEach(e => {
             if (hauteur[e.fields.hauteurenm] === undefined) {
                 hauteur[e.fields.hauteurenm] = 1
             } else {
@@ -62,15 +62,13 @@ request.then(response => {
             }
         })
 
-        //TRIER LES OBJET PAR HAUTEUR CROISSANTE
-
-        let keyHauteur = console.log(Object.keys(hauteur))
-        let valueHauteur = console.log(Object.values(hauteur))
+        let keyHauteur = Object.keys(hauteur)
+        let valueHauteur = Object.values(hauteur)
 
 
 
         //circonférence
-        response.data.records.forEach(e => {
+        response.records.forEach(e => {
             if (circonference[e.fields.circonferenceencm] === undefined) {
                 circonference[e.fields.circonferenceencm] = 1
             } else {
@@ -78,10 +76,8 @@ request.then(response => {
             }
         })
 
-        //TRIER LES OBJET PAR HAUTEUR CROISSANTE
-
-        let keyCirconf = console.log(Object.keys(circonference))
-        let valueCirconf = console.log(Object.values(circonference))
+        let keyCirconf = Object.keys(circonference)
+        let valueCirconf = Object.values(circonference)
 
 
 
