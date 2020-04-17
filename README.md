@@ -4,22 +4,22 @@ Réalisé par Clélie Chassignet, Zoé Durand, Mélissande Gaillot, Flora Mallet
 
 Avec l'API sur les arbres de Paris.
 
-#Mise en place
+# Mise en place
 
-###Dépendances
+### Dépendances
 
 Le projet nécessite d'installer les dépendances à la racine du dossier avec la commande
 ```
 npm install
 ```
 
-###Lancement
+### Lancement
 
 Le lancement se fait avec la commande :
 ```
 npm install
 ```
 
-#Présentation
+# Présentation
 
 A venir
