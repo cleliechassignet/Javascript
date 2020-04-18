@@ -11,6 +11,11 @@ export default {
         return { ...state, count: state.count - 1 }
     },
 
+    setCount: myCount => state => {
+        console.log(state)
+        return { ...state, count: myCount}
+    },
+
     setIp: ip => state => {
         return { ...state, ip: ip } // on retourne le nouveau state en modifiant l'adresse ip dans notre state
     },

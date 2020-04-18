@@ -4,8 +4,8 @@ import { h } from 'hyperapp'
 export default (props) =>
     h('div', { id: 'sidebar-wrapper' }, [
       h('div', { class: 'list-group list-group-flush'}, [
-        h('a', {href: '#', class: 'selected list-group-item list-group-item-action'}, 'Général'),
-        h('a', {href: 'geographic.html', class: 'selected list-group-item list-group-item-action'}, 'Géographique'),
-        h('a', {href: '#', class: 'selected list-group-item list-group-item-action'}, 'Caractéristiques')
+        h('a', {href: '#', class: 'selected list-group-item list-group-item-action', onclick: props.btn1Onclick}, 'Général'),
+        h('a', {href: '#', class: 'selected list-group-item list-group-item-action', onclick: props.btn2Onclick}, 'Géographique'),
+        h('a', {href: '#', class: 'selected list-group-item list-group-item-action', onclick: props.btn3Onclick}, 'Caractéristiques')
       ])
     ])

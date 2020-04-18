@@ -7,10 +7,14 @@ import SmallNav from '../components/SmallNav'
 
 export default (state, actions) =>
     h('div', {class: 'd-flex', id: 'wrapper'}, [
-        SideBar({}),
+        SideBar({
+          btn1Onclick: () => actions.setCount(0),
+          btn2Onclick: () => actions.setCount(1),
+          btn3Onclick: () => actions.setCount(2)
+        }),
 
         h('div', {id: 'page-content-wrapper'}, [
-          h('div', {class: 'container-fluid row justify-content-center align-items-center'}, [
+          h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 0 ? "display: none;" : "")}, [
 
             h('div', {class: 'main-title'}, [
               h('p', {}, 'LES ARBRES')
@@ -43,7 +47,6 @@ export default (state, actions) =>
                   ]),
                 ]),
 
-
                 h('div', {class: 'row h-onethird p-2 mt-3'}, [
 
                   h('div', {class: 'col-md-7 px-2'}, [
@@ -70,14 +73,26 @@ export default (state, actions) =>
                   ]),
 
                   h('div', {class: 'col-md-6 px-2'}, [
-                    h('div', {class: 'card card-body'}, [
-                      h('p', {}, 'Circonférence (m)') // ici il faut appeler un graphe
-                    ])
+                  h('div', {class: 'card card-body'}, [
+                    h('p', {}, 'Circonférence (m)') // ici il faut appeler un graphe
                   ])
-
                 ])
 
+              ])
             ])
+
+          ]),
+          h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 1 ? "display: none;" : "")}, [
+
+            h('div', {class: 'main-title'}, [
+              h('p', {}, 'Geographie')
+            ]),
+          ]),
+          h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 2 ? "display: none;" : "")}, [
+
+            h('div', {class: 'main-title'}, [
+              h('p', {}, 'Caracteristiques')  
+            ]),
           ])
         ])
     ])
