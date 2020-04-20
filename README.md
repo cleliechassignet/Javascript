@@ -17,7 +17,7 @@ npm install
 
 Le lancement se fait avec la commande :
 ```
-npm install
+npm run start
 ```
 
 # Présentation
