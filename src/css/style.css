@@ -18,11 +18,15 @@ Orange : #D49375
 
 body {
   overflow-x: hidden;
-  /* background: url('../img/background.png') center/100% repeat-y; */
+  background: url('../img/background.png') center/100% repeat-y;
   font-family : 'Barlow', sans-serif;
 }
 
 /* TEMPLATE */
+#wrapper {
+  min-height: 100vh;
+}
+
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
@@ -45,6 +49,7 @@ body {
 
 #page-content-wrapper {
   min-width: 100vw;
+  min-height: 100vh;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -52,6 +57,7 @@ body {
 }
 
 /*Personnalisation */
+
 
 .arrow-right {
   position: absolute;
@@ -99,8 +105,9 @@ body {
     font-weight: 600;
 }
 
+
 .main-title {
-  width: 15vw;
+  width: 25vw;
   height: 6vh;
   align-self: flex-end;
   margin-right : 16vw;
@@ -132,6 +139,11 @@ body {
   opacity: 1.0;
 }
 
+.chartjs-size-monitor {
+  max-height: 100%;
+  max-width: 90%;
+}
+
 #nb-arbre {
   background-color: #3C8784;
   color : #FFFFFF;
@@ -142,12 +154,29 @@ body {
   margin: 1vh auto;
 }
 
+.info {
+  z-index : 30;
+  background-color: #79BE99;
+  color: white;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+svg {
+  position: relative;
+  left:10px;
+  color: #79BE99;
+}
+
+
+
+
 
 /* RESPONSIVE */
 @media (min-width: 768px) {
 
   .container-fluid {
-    height: 100vh;
+    min-height: 100vh;
     flex-direction: column;
   }
 
@@ -167,12 +196,25 @@ body {
   .small {
     display: none;
   }
+
+  .info {
+    width:auto;
+    display: none;
+    position: absolute;
+    left: 50%;
+    top : 0;
+  }
+
+  svg:hover~div {
+    display: flex;
+  }
+
 }
 
 @media (max-width: 768px) {
 
   body {
-    /* background: url('../img/background.png') center/250% ; */
+    background: url('../img/background.png') center/250% ;
   }
 
   #sidebar-wrapper, .main-title {
@@ -238,6 +280,11 @@ body {
     border : 2px solid #3C8784;
   }
 
+  .card {
+    display: flex;
+    flex-direction: column !important;
+  }
+
   .h-onethird {
     /* min-height: 40vh; */
     justify-content: center;
@@ -250,6 +297,12 @@ body {
 
   #nb-arbre>h3 {
     font-size: 12vw;
+  }
+
+  .info {
+    width:auto;
+    display: flex;
+    position: relative;
   }
 
 }

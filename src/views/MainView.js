@@ -4,6 +4,7 @@ import Button from '../components/Button'
 import BarChart from '../components/BarChart'
 import SideBar from '../components/SideBar'
 import SmallNav from '../components/SmallNav'
+import CardHeader from '../components/CardHeader'
 
 export default (state, actions) =>
     h('div', {class: 'd-flex', id: 'wrapper'}, [
@@ -17,7 +18,7 @@ export default (state, actions) =>
           h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 0 ? "display: none;" : "")}, [
 
             h('div', {class: 'main-title'}, [
-              h('p', {}, 'LES ARBRES')
+              h('p', {}, 'LES ARBRES A PARIS')
             ]),
 
             h('div', {class: 'main-content col-lg-8 col-md-10 col-sm-11 col-xs-10 pb-2'}, [
@@ -28,20 +29,31 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-4 col-sm-6 col-xs-4 px-2'}, [
                     h('div', {class: 'card card-body', id: 'nb-arbre'}, [
-                      h('p', {}, 'Nombre d\'arbres'),
+                      CardHeader({title: 'Nombre d\'arbres', infos: 'Une information de malade expliquant que ce sont tous les arbres recensés à Paris'}),
                       h('h3', {}, '17636') // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-8 px-2'}, [
                     h('div', {class: 'card card-body flex-row'}, [
-                      h('p', {}, 'Libellé'),
+                      CardHeader({title: 'Libellé', infos: 'Une autre information'}),
                       BarChart({
-                          labels: ['React', 'Angular', 'Vue', 'Hyperapp', 'Omi'],
-                          data: [135850, 52122, 148825, 16939, 9763],
-                          title: 'exemple de BarChart',
-                          width: 500,
-                          height: 200
+                          labels: [],
+                          data:  [],
+                          title: 'nombre d\'espaces verts par catégories',
+                          width: 400,
+                          height: 200,
+                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
+                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
+                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
+                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
+                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
+                                      chart.data.labels = labels
+                                      chart.data.datasets[0].data = data
+                                      chart.update({duration: 800})
+                                  }
+                              })
+                          }
                       }) // ici il faut appeler un graphe
                     ])
                   ]),
@@ -51,13 +63,13 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-7 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      h('p', {}, 'Localisation') // ici il faut appeler une info
+                      CardHeader({title: 'Localisation', infos: 'Encore une autre information'}) // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-5 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      h('p', {}, 'Domanialité') // ici il faut appeler un graphe
+                      CardHeader({title: 'Domanialité', infos: 'Relatif au domaine, donc si l\'arbre est situé sur un espace public ou privé'}) // ici il faut appeler un graphe
                     ])
                   ]),
 
@@ -68,13 +80,13 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-6 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      h('p', {}, 'Hauteur (m)') // ici il faut appeler une info
+                      CardHeader({title: 'Hauteur (m)', infos: 'C\'est bien les arbres'}) // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-6 px-2'}, [
                   h('div', {class: 'card card-body'}, [
-                    h('p', {}, 'Circonférence (m)') // ici il faut appeler un graphe
+                    CardHeader({title: 'Circonférence (m)', infos: 'Coucou ça va ?'}) // ici il faut appeler un graphe
                   ])
                 ])
 
@@ -85,13 +97,13 @@ export default (state, actions) =>
           h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 1 ? "display: none;" : "")}, [
 
             h('div', {class: 'main-title'}, [
-              h('p', {}, 'Geographie')
+              CardHeader({title: 'Géographie', infos: 'Ceci doit expliquer géographie'})
             ]),
           ]),
           h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 2 ? "display: none;" : "")}, [
 
             h('div', {class: 'main-title'}, [
-              h('p', {}, 'Caracteristiques')  
+              CardHeader({title: 'Caractéristiques', infos: 'Ceci doit expliquer Caractéristiques'})
             ]),
           ])
         ])
