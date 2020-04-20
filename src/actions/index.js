@@ -28,19 +28,22 @@ export default {
         })
             .catch(error => { console.log(error) })
     },
-    getEspaceVertsDataFromApi: ({count, callBack}) => (state, actions) => {
-        const request = axios.get('https://opendata.paris.fr/api/records/1.0/search/?dataset=espaces_verts&facet=categorie&rows=' + (count || 10))
+
+    getDataFromApi: ({count, callBack}) => (state, actions) => {
+        const request = axios.get('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&facet=domanialite&facet=libellefrancais&facet=arrondissement&facet=circonference&facet=hauteur' 
+            + (count || 10))
         request
             .then(response => {
-                // je calcul mon nouveau state via l'action parseEspaceVertsData qui soccupe de faire mon tri sur les données reçus
-                const newState = actions.parseEspaceVertsData(response.data.records)
-                // une fois le state calculé, j'appel mon fonction de callback avec mes nouvelles données
-                if ( callBack !== undefined) { callBack(newState.espacesVertsData.categories, newState.espacesVertsData.categoriesCount) }
+                // je calcul mon nouveau state via l'action parseData qui soccupe de faire mon tri sur les données reçues
+                const newState = actions.parseData(response.data.records)
+                // une fois le state calculé, j'appel ma fonction de callback avec mes nouvelles données
+                if ( callBack !== undefined) { callBack(newState.arbresData.categories, newState.arbresData.categoriesCount) }
                 return newState // enfin je retourne le state car c'est le but de toute action (retrouver le nouveau state)
             })
             .catch(error => { console.log(error) })
     },
-    parseEspaceVertsData: list => state => {
+
+    parseData: list => state => {
         const categories = list.map( x => x.fields.categorie) // on récupère uniquement la catégorie de chaque espace vert
         // à l'aide de la fonction reduce (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/reduce)
         // je compte le nombre d'éléments dans chaque catégories
@@ -50,9 +53,9 @@ export default {
         }, {})
         return {
             ...state,
-            espacesVertsData: {
+            arbresData: {
                 categories: Object.keys(categoriesCount), // je récupère un tableau représentant les categories
-                categoriesCount:  Object.values(categoriesCount) // et le nombre d'element dans chaque categories
+                categoriesCount: Object.values(categoriesCount) // et le nombre d'element dans chaque categories
             }
         }
     }
