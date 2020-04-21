@@ -75,7 +75,6 @@ export default (state, actions) =>
 
                 ]),
 
-
                 h('div', {class: 'row h-onethird p-2'}, [
 
                   h('div', {class: 'col-md-6 px-2'}, [
@@ -92,18 +91,79 @@ export default (state, actions) =>
 
               ])
             ])
-
           ]),
+
+
+          ////////// Page géographie //////////
           h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 1 ? "display: none;" : "")}, [
-
+       
             h('div', {class: 'main-title'}, [
-              CardHeader({title: 'Géographie', infos: 'Ceci doit expliquer géographie'})
+              h('p', {}, 'LES ARBRES A PARIS')
             ]),
+
+            h('div', {class: 'main-content col-lg-8 col-md-10 col-sm-11 col-xs-10 pb-2'}, [
+
+                SmallNav({}),
+
+                  h('div', {class: 'row h-onesecond p-2 mt-3, row justify-content-center align-items-center'}, [
+
+                  h('div', {class: 'col-md-8 px-2 py-3 mt-2'}, [
+                    h('div', {class: 'card card-body'}, [
+                      CardHeader({title: 'Localisation', infos: 'Encore une autre information'}), // ici il faut appeler une info
+                      BarChart({
+                          labels: [],
+                          data:  [],
+                          title: 'nombre d\'espaces verts par catégories',
+                          width: 400,
+                          height: 200,
+                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
+                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
+                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
+                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
+                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
+                                      chart.data.labels = labels
+                                      chart.data.datasets[0].data = data
+                                      chart.update({duration: 800})
+                                  }
+                              })
+                          }
+                      })
+                    ])
+                  ]),
+
+                  h('div', {class: 'col-md-8 px-2 mt-3'}, [
+                    h('div', {class: 'card card-body'}, [
+                      CardHeader({title: 'Domanialité', infos: 'Relatif au domaine, donc si l\'arbre est situé sur un espace public ou privé'}), // ici il faut appeler un graphe
+                    
+                      BarChart({
+                          labels: [],
+                          data:  [],
+                          title: 'nombre d\'espaces verts par catégories',
+                          width: 400,
+                          height: 200,
+                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
+                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
+                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
+                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
+                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
+                                      chart.data.labels = labels
+                                      chart.data.datasets[0].data = data
+                                      chart.update({duration: 800})
+                                  }
+                              })
+                          }
+                      })
+                    ])
+                  ]),
+                ]),
+            ])
           ]),
+
+          ////////// Page caracteristiques //////////
           h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 2 ? "display: none;" : "")}, [
 
             h('div', {class: 'main-title'}, [
-              CardHeader({title: 'Caractéristiques', infos: 'Ceci doit expliquer Caractéristiques'})
+              h('p', {}, 'Caracteristiques')
             ]),
           ])
         ])
