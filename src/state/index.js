@@ -1,6 +1,6 @@
 export default {
     count: 0,
-
+    
     page: [{
         titre: 'Général',
         d_1: 'Nombre d\'arbres',

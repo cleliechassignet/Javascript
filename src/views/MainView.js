@@ -96,7 +96,7 @@ export default (state, actions) =>
 
           ////////// Page géographie //////////
           h('div', {class: 'container-fluid row justify-content-center align-items-center', style: "" + (state.count !== 1 ? "display: none;" : "")}, [
-       
+
             h('div', {class: 'main-title'}, [
               h('p', {}, 'LES ARBRES A PARIS')
             ]),
@@ -134,7 +134,7 @@ export default (state, actions) =>
                   h('div', {class: 'col-md-8 px-2 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
                       CardHeader({title: 'Domanialité', infos: 'Mais à qui appartiennent donc tous ces arbres? Tu l\'auras compris la domanialité c\'est l\'appartenance de l\'arbre au domaine public ou privé. Et toi tu as combien d\'arbres chez toi?'}), // ici il faut appeler un graphe
-                    
+
                       BarChart({
                           labels: [],
                           data:  [],
@@ -199,7 +199,7 @@ export default (state, actions) =>
                   h('div', {class: 'col-md-8 px-2 mb-3 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
                       CardHeader({title: 'Hauteur (m)', infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?'}), // ici il faut appeler un graphe
-                    
+
                       BarChart({
                           labels: [],
                           data:  [],
@@ -224,7 +224,7 @@ export default (state, actions) =>
                   h('div', {class: 'col-md-8 px-2 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
                       CardHeader({title: 'Circonférence (cm)', infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur'}), // ici il faut appeler un graphe
-                    
+
                       BarChart({
                           labels: [],
                           data:  [],
@@ -247,7 +247,7 @@ export default (state, actions) =>
                   ]),
                 ]),
             ])
-            
+
           ])
         ])
     ])

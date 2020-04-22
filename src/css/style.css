@@ -162,12 +162,12 @@ body {
   padding: 15px;
 }
 
-svg {
+.svg {
+  max-width: 15px;
   position: relative;
   left:10px;
   color: #79BE99;
 }
-
 
 
 
@@ -205,7 +205,7 @@ svg {
     top : 0;
   }
 
-  svg:hover~div {
+  .svg:hover~div {
     display: flex;
   }
 
