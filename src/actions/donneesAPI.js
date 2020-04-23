@@ -1,4 +1,4 @@
-const request = fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&facet=domanialite&facet=libellefrancais&facet=arrondissement&facet=circonference&facet=hauteur')
+const request = fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&rows=205245&facet=domanialite&facet=libellefrancais&facet=arrondissement&facet=circonference&facet=hauteur')
     .then(response => response.json());
 
 const libelle = {}
@@ -32,8 +32,8 @@ request.then(response => {
         }
     })
 
-    newPage[0] = {...newPage[0], d_2: {.catch.catch.newPage[0].d_2, value: keyLibelle, count: valueLibelle } };
-    newPage[2] = {...newPage[2], d_1: {.catch.catch.newPage[2].d_1, value: keyLibelle, count: valueLibelle } };
+    newPage[0] = {...newPage[0], d_2: {...newPage[0].d_2, value: keyLibelle, count: valueLibelle } };
+    newPage[2] = {...newPage[2], d_1: {...newPage[2].d_1, value: keyLibelle, count: valueLibelle } };
 
     //localisation
     response.records.forEach(e => {
@@ -46,8 +46,8 @@ request.then(response => {
     let keyLoc = Object.keys(localisation)
     let valueLoc = Object.values(localisation)
 
-    newPage[0] = {...newPage[0], d_3: {.catch.catch.newPage[0].d_3, value: keyLoc, count: valueLoc } };
-    newPage[1] = {...newPage[1], d_1: {.catch.catch.newPage[1].d_1, value: keyLoc, count: valueLoc } };
+    newPage[0] = {...newPage[0], d_3: {...newPage[0].d_3, value: keyLoc, count: valueLoc } };
+    newPage[1] = {...newPage[1], d_1: {...newPage[1].d_1, value: keyLoc, count: valueLoc } };
 
     //domanialite
     response.records.forEach(e => {
@@ -60,8 +60,8 @@ request.then(response => {
     let keyDomaine = Object.keys(domaine)
     let valueDomaine = Object.values(domaine)
 
-    newPage[0] = {...newPage[0], d_4: {.catch.catch.newPage[0].d_4, value: keyDomaine, count: valueDomaine } };
-    newPage[1] = {...newPage[1], d_2: {.catch.catch.newPage[1].d_2, value: keyDomaine, count: valueDomaine } };
+    newPage[0] = {...newPage[0], d_4: {...newPage[0].d_4, value: keyDomaine, count: valueDomaine } };
+    newPage[1] = {...newPage[1], d_2: {...newPage[1].d_2, value: keyDomaine, count: valueDomaine } };
 
 
     //hauteur
@@ -76,8 +76,8 @@ request.then(response => {
     let keyHauteur = Object.keys(hauteur)
     let valueHauteur = Object.values(hauteur)
 
-    newPage[0] = {...newPage[0], d_5: {.catch.catch.newPage[0].d_5, value: keyHauteur, count: valueHauteur } };
-    newPage[2] = {...newPage[2], d_2: {.catch.catch.newPage[2].d_2, value: keyHauteur, count: valueHauteur } };
+    newPage[0] = {...newPage[0], d_5: {...newPage[0].d_5, value: keyHauteur, count: valueHauteur } };
+    newPage[2] = {...newPage[2], d_2: {...newPage[2].d_2, value: keyHauteur, count: valueHauteur } };
 
 
     //circonférence
@@ -92,8 +92,8 @@ request.then(response => {
     let keyCirconf = Object.keys(circonference)
     let valueCirconf = Object.values(circonference)
 
-    newPage[0] = {...newPage[0], d_6: {.catch.catch.newPage[0].d_6, value: keyCirconf, count: valueCirconf } };
-    newPage[2] = {...newPage[2], d_3: {.catch.catch.newPage[2].d_3, value: keyCirconf, count: valueCirconf } };
+    newPage[0] = {...newPage[0], d_6: {...newPage[0].d_6, value: keyCirconf, count: valueCirconf } };
+    newPage[2] = {...newPage[2], d_3: {...newPage[2].d_3, value: keyCirconf, count: valueCirconf } };
 
     state.page = newPage;
 
