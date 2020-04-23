@@ -33,14 +33,14 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-4 col-sm-6 col-xs-4 px-2'}, [
                     h('div', {class: 'card card-body', id: 'nb-arbre'}, [
-                      CardHeader({title: 'Nombre d\'arbres', infos: 'Une information de malade expliquant que ce sont tous les arbres recensés à Paris'}),
+                      CardHeader({title: 'Nombre d\'arbres', infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?'}),
                       h('h3', {}, '17636') // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-8 px-2'}, [
                     h('div', {class: 'card card-body flex-row'}, [
-                      CardHeader({title: 'Libellé', infos: 'On trouve à peu près 200 espèces d\'arbres à Paris'}),
+                      CardHeader({title: 'Libellé', infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?'}),
                       BarChart({
                           labels: [],
                           data:  [],
@@ -67,13 +67,13 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-7 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Localisation', infos: 'Encore une autre information'}) // ici il faut appeler une info
+                      CardHeader({title: 'Localisation', infos: 'Chaque arbre est suivi par sa "carte d\'identité informatique",  elle regroupe toutes les informations nécessaires au suivi de l\'arbre par la ville.'}) // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-5 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Domanialité', infos: 'Relatif au domaine, donc si l\'arbre est situé sur un espace public ou privé'}) // ici il faut appeler un graphe
+                      CardHeader({title: 'Domanialité', infos: 'L\'arbre est-il situé sur un espace public ou privé ?'}) // ici il faut appeler un graphe
                     ])
                   ]),
 
@@ -83,13 +83,13 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-6 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Hauteur (m)', infos: 'C\'est bien les arbres'}) // ici il faut appeler une info
+                      CardHeader({title: 'Hauteur (m)', infos: 'L\'arbre le plus haut de la ville est un Platane d\'Orient, il mesure 30 mètre et est centenaire !'}) // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-6 px-2'}, [
                   h('div', {class: 'card card-body'}, [
-                    CardHeader({title: 'Circonférence (m)', infos: 'Coucou ça va ?'}) // ici il faut appeler un graphe
+                    CardHeader({title: 'Circonférence (cm)', infos: 'L\'âge d\'un arbre peut être approximé grâce à sa circonférence ! Il suffit de prendre sa circonférence en cm et de la diviser par 2.5, n\'est-ce pas formidable ?'}) // ici il faut appeler un graphe
                   ])
                 ])
 
@@ -186,7 +186,7 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-8 px-2 py-3 mt-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Libellé', infos: 'Appelation française des arbres. (Eh oui la langue française est pleine de mots tordus). A t\'on avis, est ce que le "Fremontondendron de Californie" existe ?'}), // ici il faut appeler une info
+                      CardHeader({title: 'Libellé', infos: 'Appelation française des arbres. (Eh oui la langue française est pleine de mots tordus). A ton avis, est-ce que le "Fremontondendron de Californie" existe ?'}), // ici il faut appeler une info
                       BarChart({
                           labels: [],
                           data:  [],
