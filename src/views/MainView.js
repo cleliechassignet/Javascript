@@ -23,7 +23,11 @@ export default (state, actions) =>
 
             h('div', {class: 'main-content col-lg-8 col-md-10 col-sm-11 col-xs-10 pb-2'}, [
 
-                SmallNav({}),
+                SmallNav({
+                  btn1bOnclick: () => actions.setCount(0),
+                  btn2bOnclick: () => actions.setCount(1),
+                  btn3bOnclick: () => actions.setCount(2)
+                }),
 
                 h('div', {class: 'row h-onethird mt-2 p-2'}, [
 
@@ -103,7 +107,11 @@ export default (state, actions) =>
 
             h('div', {class: 'main-content col-lg-8 col-md-10 col-sm-11 col-xs-10 pb-2'}, [
 
-                SmallNav({}),
+                SmallNav({
+                  btn1bOnclick: () => actions.setCount(0),
+                  btn2bOnclick: () => actions.setCount(1),
+                  btn3bOnclick: () => actions.setCount(2)
+                }),
 
                   h('div', {class: 'row h-onesecond p-2 mt-3, row justify-content-center align-items-center'}, [
 
@@ -168,7 +176,11 @@ export default (state, actions) =>
 
             h('div', {class: 'main-content col-lg-8 col-md-10 col-sm-11 col-xs-10 pb-2'}, [
 
-                SmallNav({}),
+                SmallNav({
+                  btn1bOnclick: () => actions.setCount(0),
+                  btn2bOnclick: () => actions.setCount(1),
+                  btn3bOnclick: () => actions.setCount(2)
+                }),
 
                   h('div', {class: 'row h-onethird p-2 mt-3, row justify-content-center align-items-center'}, [
 
