@@ -35,14 +35,14 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-4 col-sm-6 col-xs-4 px-2'}, [
                     h('div', {class: 'card card-body', id: 'nb-arbre'}, [
-                      CardHeader({title: 'Nombre d\'arbres', infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?'}),
+                      CardHeader({title: 'Nombre d\'arbres', infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?', image: { src:'src/img/information.svg', class:'svg'}}),
                       h('h3', {}, '17636') // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-8 px-2'}, [
                     h('div', {class: 'card card-body flex-row'}, [
-                      CardHeader({title: 'Libellé', infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?'}),
+                      CardHeader({title: 'Libellé', infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?', reponse: 'Test'}),
                       BarChart({
                           labels: ['Arbre au 40 ecus', 'Cèdre', 'Chêne', 'Hêtre', 'Marronnier', 'Platane'],
                           data: [8, 8, 11, 12, 9, 32],

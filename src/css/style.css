@@ -154,7 +154,7 @@ body {
   margin: 1vh auto;
 }
 
-.info {
+.info, .reponse{
   z-index : 30;
   background-color: #79BE99;
   color: white;
@@ -162,11 +162,12 @@ body {
   padding: 15px;
 }
 
-.svg {
+.svg, .png {
   max-width: 15px;
   position: relative;
   left:10px;
   color: #79BE99;
+  margin: 3px;
 }
 
 
@@ -197,7 +198,7 @@ body {
     display: none;
   }
 
-  .info {
+  .info, .reponse {
     width:auto;
     display: none;
     position: absolute;
@@ -205,7 +206,11 @@ body {
     top : 0;
   }
 
-  .svg:hover~div {
+  .svg:hover~.info {
+    display: flex;
+  }
+
+  .png:hover~.reponse {
     display: flex;
   }
 
@@ -299,7 +304,7 @@ body {
     font-size: 12vw;
   }
 
-  .info {
+  .info, .reponse {
     width:auto;
     display: flex;
     position: relative;
