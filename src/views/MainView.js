@@ -2,6 +2,8 @@ import { h } from 'hyperapp'
 
 import Button from '../components/Button'
 import BarChart from '../components/BarChart'
+import Pie from '../components/Pie'
+import Line from '../components/Line'
 import SideBar from '../components/SideBar'
 import SmallNav from '../components/SmallNav'
 import CardHeader from '../components/CardHeader'
@@ -42,23 +44,12 @@ export default (state, actions) =>
                     h('div', {class: 'card card-body flex-row'}, [
                       CardHeader({title: 'Libellé', infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?'}),
                       BarChart({
-                          labels: [],
-                          data:  [],
-                          title: 'nombre d\'espaces verts par catégories',
-                          width: 400,
-                          height: 200,
-                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
-                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
-                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
-                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
-                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
-                                      chart.data.labels = labels
-                                      chart.data.datasets[0].data = data
-                                      chart.update({duration: 800})
-                                  }
-                              })
-                          }
-                      }) // ici il faut appeler un graphe
+                          labels: ['Arbre au 40 ecus', 'Cèdre', 'Chêne', 'Hêtre', 'Marronnier', 'Platane'],
+                          data: [8, 8, 11, 12, 9, 32],
+                          title: 'Type d\'arbre',
+                          width: 100,
+                          height: 100
+                      }),
                     ])
                   ]),
                 ]),
@@ -67,7 +58,14 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-7 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Localisation', infos: 'Chaque arbre est suivi par sa "carte d\'identité informatique",  elle regroupe toutes les informations nécessaires au suivi de l\'arbre par la ville.'}) // ici il faut appeler une info
+                      CardHeader({title: 'Localisation', infos: 'Chaque arbre est suivi par sa "carte d\'identité informatique",  elle regroupe toutes les informations nécessaires au suivi de l\'arbre par la ville.'}), // ici il faut appeler une info
+                      Pie({
+                          labels: ['Paris Centre', 'Nord-Est', 'Bois de boulogne', 'Nord-Ouest', 'Sud-Ouest'],
+                          data: [45, 10, 15, 25, 5],
+                          title: 'Les arrondissements avec le plus d\'arbres',
+                          width: 100,
+                          height: 100
+                      })
                     ])
                   ]),
 
@@ -83,13 +81,27 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-6 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Hauteur (m)', infos: 'L\'arbre le plus haut de la ville est un Platane d\'Orient, il mesure 30 mètre et est centenaire !'}) // ici il faut appeler une info
+                      CardHeader({title: 'Hauteur (m)', infos: 'L\'arbre le plus haut de la ville est un Platane d\'Orient, il mesure 30 mètre et est centenaire !'}), // ici il faut appeler une info
+                      Line({
+                          labels: ['4m', '7m', '10m', '13m', '16m', '19m', '22m', '25m','28m', '31m','34m', '+35m'],
+                          data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
+                          title: ' ',
+                          width: 100,
+                          height: 100
+                      })
                     ])
                   ]),
 
                   h('div', {class: 'col-md-6 px-2'}, [
                   h('div', {class: 'card card-body'}, [
-                    CardHeader({title: 'Circonférence (cm)', infos: 'L\'âge d\'un arbre peut être approximé grâce à sa circonférence ! Il suffit de prendre sa circonférence en cm et de la diviser par 2.5, n\'est-ce pas formidable ?'}) // ici il faut appeler un graphe
+                    CardHeader({title: 'Circonférence (cm)', infos: 'L\'âge d\'un arbre peut être approximé grâce à sa circonférence ! Il suffit de prendre sa circonférence en cm et de la diviser par 2.5, n\'est-ce pas formidable ?'}), // ici il faut appeler un graphe
+                    Line({
+                        labels: ['50', '100', '150', '200', '250', '300', '350', '400','450', '500','550', '600'],
+                        data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
+                        title: ' ',
+                        width: 100,
+                        height: 100
+                    })
                   ])
                 ])
 
@@ -118,23 +130,12 @@ export default (state, actions) =>
                   h('div', {class: 'col-md-8 px-2 py-3 mt-2'}, [
                     h('div', {class: 'card card-body'}, [
                       CardHeader({title: 'Localisation', infos: 'Voici la quantité d\'arbres que tu peux trouver par arrondissement. Est-ce que tu savais que le 1er arrondissement est celui qui contient le plus d\'arbres?'}), // ici il faut appeler une info
-                      BarChart({
-                          labels: [],
-                          data:  [],
-                          title: 'nombre d\'espaces verts par catégories',
-                          width: 400,
-                          height: 200,
-                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
-                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
-                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
-                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
-                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
-                                      chart.data.labels = labels
-                                      chart.data.datasets[0].data = data
-                                      chart.update({duration: 800})
-                                  }
-                              })
-                          }
+                      Pie({
+                          labels: ['XXe', 'XVe', 'Bois de boulogne', 'Ier', 'IIIe'],
+                          data: [45, 10, 15, 25, 5],
+                          title: 'Les arrondissements avec le plus d\'arbres',
+                          width: 80,
+                          height: 30
                       })
                     ])
                   ]),
@@ -188,22 +189,11 @@ export default (state, actions) =>
                     h('div', {class: 'card card-body'}, [
                       CardHeader({title: 'Libellé', infos: 'Appelation française des arbres. (Eh oui la langue française est pleine de mots tordus). A ton avis, est-ce que le "Fremontondendron de Californie" existe ?'}), // ici il faut appeler une info
                       BarChart({
-                          labels: [],
-                          data:  [],
-                          title: 'nombre d\'espaces verts par catégories',
-                          width: 400,
-                          height: 200,
-                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
-                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
-                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
-                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
-                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
-                                      chart.data.labels = labels
-                                      chart.data.datasets[0].data = data
-                                      chart.update({duration: 800})
-                                  }
-                              })
-                          }
+                          labels: ['Arbre au 40 ecus', 'Cèdre', 'Chêne', 'Hêtre', 'Marronnier', 'Platane'],
+                          data: [8, 8, 11, 12, 9, 32],
+                          title: 'Type d\'arbre',
+                          width: 100,
+                          height: 100
                       })
                     ])
                   ]),
@@ -211,24 +201,12 @@ export default (state, actions) =>
                   h('div', {class: 'col-md-8 px-2 mb-3 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
                       CardHeader({title: 'Hauteur (m)', infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?'}), // ici il faut appeler un graphe
-
-                      BarChart({
-                          labels: [],
-                          data:  [],
-                          title: 'nombre d\'espaces verts par catégories',
-                          width: 400,
-                          height: 200,
-                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
-                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
-                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
-                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
-                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
-                                      chart.data.labels = labels
-                                      chart.data.datasets[0].data = data
-                                      chart.update({duration: 800})
-                                  }
-                              })
-                          }
+                      Line({
+                          labels: ['4m', '7m', '10m', '13m', '16m', '19m', '22m', '25m','28m', '31m','34m', '+35m'],
+                          data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
+                          title: ' ',
+                          width: 100,
+                          height: 100
                       })
                     ])
                   ]),
@@ -236,24 +214,12 @@ export default (state, actions) =>
                   h('div', {class: 'col-md-8 px-2 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
                       CardHeader({title: 'Circonférence (cm)', infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur'}), // ici il faut appeler un graphe
-
-                      BarChart({
-                          labels: [],
-                          data:  [],
-                          title: 'nombre d\'espaces verts par catégories',
-                          width: 400,
-                          height: 200,
-                          callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
-                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
-                                  count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
-                                  callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
-                                      // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
-                                      chart.data.labels = labels
-                                      chart.data.datasets[0].data = data
-                                      chart.update({duration: 800})
-                                  }
-                              })
-                          }
+                      Line({
+                          labels: ['50', '100', '150', '200', '250', '300', '350', '400','450', '500','550', '600'],
+                          data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
+                          title: ' ',
+                          width: 100,
+                          height: 100
                       })
                     ])
                   ]),
