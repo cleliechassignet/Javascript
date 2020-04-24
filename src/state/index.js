@@ -62,7 +62,7 @@ export default {
                 count: []
             },
             d_2: {
-                label: 'Hauteur et circonférence'
+                label: 'Hauteur et circonférence',
                 value: [],
                 count: []
             }
