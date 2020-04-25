@@ -18,7 +18,12 @@ h('div', { class: 'col-md-10' }, [
                         backgroundColor: ['rgb(121,190,153)', 'rgb(207,241,162)', 'rgb(169,218,168)', 'rgb(60,135,132)', 'rgb(121,190,153)', 'rgb(207,241,162)', 'rgb(169,218,168)', 'rgb(60,135,132)', 'rgb(121,190,153)', 'rgb(207,241,162)', 'rgb(169,218,168)', 'rgb(60,135,132)', 'rgb(121,190,153)', 'rgb(207,241,162)', 'rgb(169,218,168)', 'rgb(60,135,132)'],
                     }]
                 },
-                responsive: true
+                responsive: true,
+                options:{
+                    legend:{
+                        display:false
+                    }
+                }
             })
             c.canvas.style.height = props.height + '%'
             c.canvas.style.width = props.width + '%'

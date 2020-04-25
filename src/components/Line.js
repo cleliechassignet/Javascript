@@ -23,6 +23,11 @@ h('div', {}, [
                         maintainAspectRatio: true,
                     }]
                 },
+                options:{
+                    legend:{
+                        display:false
+                    }
+                }
             })
             c.canvas.style.height = props.height + '%'
             c.canvas.style.width = props.width + '%'
