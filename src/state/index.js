@@ -9,8 +9,8 @@ export default {
     page: {
         titres: ['Général', 'Géographique', 'Caractéristiques'],
         d_1: {
-            label: 'Nombre d\'arbres',
-            rows: 10000
+            label: 'Nombre d\'arbres à Paris',
+            rows: 205245
         },
         d_2: {
             label: 'Libellé',
@@ -30,7 +30,8 @@ export default {
         d_5: {
             label: 'Hauteur (m)',
             value: [],
-            count: []
+            count: [],
+            moyenne: 0
         },
         d_6: {
             label: 'Circonférence (cm)',

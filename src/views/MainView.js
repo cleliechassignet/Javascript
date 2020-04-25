@@ -11,7 +11,7 @@ import List from '../components/List'
 import CardHeader2 from '../components/CardHeader2'
 
 export default (state, actions) =>
-h('div', { class: 'd-flex', id: 'wrapper' }, [
+h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFromApi() } }, [
     SideBar({
         btn1Onclick: () => actions.setCount(0),
         btn2Onclick: () => actions.setCount(1),
@@ -38,7 +38,7 @@ h('div', { class: 'd-flex', id: 'wrapper' }, [
                     h('div', { class: 'col-md-4 col-sm-6 col-xs-4 px-2' }, [
                         h('div', { class: 'card card-body', id: 'nb-arbre' }, [
                             h('div', { class: 'bigDot' }, [
-                                CardHeader2({ title: 'Nombre d\'arbres' }),
+                                CardHeader2({ title: 'Nombre d\'arbres à Paris' }),
                                 h('div', { class: 'dot' }, [
                                     CardHeader({ display: 1, infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?' }),
                                 ]),
@@ -244,6 +244,7 @@ h('div', { class: 'd-flex', id: 'wrapper' }, [
                 }),
 
                 h('div', { class: 'row h-onethird p-2 mt-3, row justify-content-center align-items-center' }, [
+
 
                     h('div', { class: 'col-md-8 px-2 py-3 mt-2' }, [
                         h('div', { class: 'card card-body' }, [

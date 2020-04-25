@@ -15,7 +15,7 @@ h('div', {}, [
                     datasets: [{
                         label: props.title || 'default title',
                         data: props.data,
-                        backgroundColor: ['rgb(121,190,153)', 'rgb(207,241,162)', 'rgb(169,218,168)', 'rgb(60,135,132)', 'rgb(207,241,162)', 'rgb(121,190,153)', 'rgb(169,218,168)']
+                        backgroundColor: ['rgb(121,190,153)', 'rgb(207,241,162)', 'rgb(169,218,168)', 'rgb(60,135,132)', 'rgb(207,241,162)', 'rgb(121,190,153)', 'rgb(169,218,168)', 'rgb(121,190,153)', 'rgb(207,241,162)', 'rgb(169,218,168)']
                     }]
                 },
                 responsive: true

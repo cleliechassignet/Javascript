@@ -67,13 +67,13 @@ export default {
         const localisation = {}
         const domaine = {}
         const hauteur = {}
+        let moyenneHauteur = 0
         const circonference = {}
         let pos;
         let newPage;
 
         newPage = state.page;
 
-        console.log(list)
 
         //libelle
         list.forEach(e => {
@@ -89,7 +89,7 @@ export default {
         let newValueLibelle = [];
 
         valueLibelle.forEach(e => {
-            if (e > 100) {
+            if (e > 400) {
                 pos = valueLibelle.indexOf(e);
                 newValueLibelle.push(valueLibelle[pos]);
                 newKeyLibelle.push(keyLibelle[pos]);
@@ -108,7 +108,37 @@ export default {
         let keyLoc = Object.keys(localisation)
         let valueLoc = Object.values(localisation)
 
-        newPage = {...newPage, d_3: {...newPage.d_3, value: keyLoc, count: valueLoc } };
+        let newKeyLoc = ["Centre", 'Paris Est', "Paris Ouest", "Paris Sud", "Paris Nord", "Hauts-de-Seine", "Seine-Saint-Denis", "Bois de Vincennes", "Bois de Boulogne", "Val de Marne"]
+        let newValueLoc = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+        keyLoc.forEach(e => {
+            pos = keyLoc.indexOf(e)
+            if (e === "PARIS 1ER ARRDT" || e === "PARIS 2E ARRDT" || e === "PARIS 3E ARRDT" || e === "PARIS 4E ARRDT" || e === "PARIS 5E ARRDT" || e === "PARIS 6E ARRDT") {
+                newValueLoc[0] += valueLoc[pos]
+            } else if (e === "PARIS 11E ARRDT" || e === "PARIS 20E ARRDT" || e === "PARIS 12E ARRDT") {
+                newValueLoc[1] += valueLoc[pos]
+            } else if (e === "PARIS 7E ARRDT" || e === "PARIS 8E ARRDT" || e === "PARIS 16E ARRDT") {
+                newValueLoc[2] += valueLoc[pos]
+            } else if (e === "PARIS 13E ARRDT" || e === "PARIS 14E ARRDT" || e === "PARIS 15E ARRDT") {
+                newValueLoc[3] += valueLoc[pos]
+            } else if (e === "PARIS 17E ARRDT" || e === "PARIS 18E ARRDT" || e === "PARIS 19E ARRDT" || e === "PARIS 9E ARRDT" || e === "PARIS 10E ARRDT") {
+                newValueLoc[4] += valueLoc[pos]
+            } else if (e === "HAUTS-DE-SEINE") {
+                newValueLoc[5] += valueLoc[pos]
+            } else if (e === "SEINE-SAINT-DENIS") {
+                newValueLoc[6] += valueLoc[pos]
+            } else if (e === "BOIS DE VINCENNES") {
+                newValueLoc[7] += valueLoc[pos]
+            } else if (e === "BOIS DE BOULOGNE") {
+                newValueLoc[8] += valueLoc[pos]
+            } else {
+                newValueLoc[9] += valueLoc[pos]
+            }
+
+        })
+
+
+        newPage = {...newPage, d_3: {...newPage.d_3, value: newKeyLoc, count: newValueLoc } }
 
         //domanialite
         list.forEach(e => {
@@ -118,6 +148,7 @@ export default {
                 domaine[e.fields.domanialite] = domaine[e.fields.domanialite] + 1
             }
         })
+
         let keyDomaine = Object.keys(domaine)
         let valueDomaine = Object.values(domaine)
 
@@ -164,12 +195,18 @@ export default {
             } else if (e <= 125) {
                 newValueHauteur[10] += valueHauteur[pos]
             } else {
-                newValueHauteur[13] += valueHauteur[pos]
+                newValueHauteur[11] += valueHauteur[pos]
             }
         })
 
+        newValueHauteur.forEach(e => {
+            moyenneHauteur += e
+        })
 
-        newPage = {...newPage, d_5: {...newPage.d_5, value: newKeyHauteur, count: newValueHauteur } };
+        moyenneHauteur = moyenneHauteur / 10000
+
+
+        newPage = {...newPage, d_5: {...newPage.d_5, value: newKeyHauteur, count: newValueHauteur, moyenne: moyenneHauteur } };
 
 
         //circonférence
@@ -185,9 +222,35 @@ export default {
         let valueCirconf = Object.values(circonference)
 
 
-        newPage = {...newPage, d_6: {...newPage.d_6, value: keyCirconf, count: valueCirconf } };
+        let newKeyCirconf = [0, 20, 50, 100, 150, 200, 250, 300]
+        let newValueCirconf = [0, 0, 0, 0, 0, 0, 0, 0]
 
-        console.log(newPage)
+        keyCirconf.forEach(e => {
+            pos = keyCirconf.indexOf(e)
+            if (e <= 10) {
+                newValueCirconf[0] += valueCirconf[pos]
+            } else if (e <= 35) {
+                newValueCirconf[1] += valueCirconf[pos]
+            } else if (e <= 75) {
+                newValueCirconf[2] += valueCirconf[pos]
+            } else if (e <= 125) {
+                newValueCirconf[3] += valueCirconf[pos]
+            } else if (e <= 175) {
+                newValueCirconf[4] += valueCirconf[pos]
+            } else if (e <= 225) {
+                newValueCirconf[5] += valueCirconf[pos]
+            } else if (e <= 275) {
+                newValueCirconf[6] += valueCirconf[pos]
+            } else {
+                newValueCirconf[7] += valueCirconf[pos]
+            }
+
+
+        })
+
+
+        newPage = {...newPage, d_6: {...newPage.d_6, value: newKeyCirconf, count: newValueCirconf } };
+
         console.log("pré set")
 
         state.chart2.data.labels = newPage.d_2.value;
