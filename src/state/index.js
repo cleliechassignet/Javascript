@@ -10,7 +10,7 @@ export default {
         titres: ['Général', 'Géographique', 'Caractéristiques'],
         d_1: {
             label: 'Nombre d\'arbres',
-            rows: 2000
+            rows: 10000
         },
         d_2: {
             label: 'Libellé',

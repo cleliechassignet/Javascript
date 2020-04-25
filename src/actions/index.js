@@ -21,20 +21,20 @@ export default {
     },
 
     registerChart2: chart => state => {
-        return {...state, chart2: chart}
+        return {...state, chart2: chart }
     },
     registerChart3: chart => state => {
         console.log("test")
-        return {...state, chart3: chart}
+        return {...state, chart3: chart }
     },
     registerChart4: chart => state => {
-        return {...state, chart4: chart}
+        return {...state, chart4: chart }
     },
     registerChart5: chart => state => {
-        return {...state, chart5: chart}
+        return {...state, chart5: chart }
     },
     registerChart6: chart => state => {
-        return {...state, chart6: chart}
+        return {...state, chart6: chart }
     },
 
     getIpFromApi: () => (state, actions) => {
@@ -109,7 +109,7 @@ export default {
         let valueLoc = Object.values(localisation)
 
         newPage = {...newPage, d_3: {...newPage.d_3, value: keyLoc, count: valueLoc } };
-        
+
         //domanialite
         list.forEach(e => {
             if (domaine[e.fields.domanialite] === undefined) {
@@ -122,7 +122,7 @@ export default {
         let valueDomaine = Object.values(domaine)
 
         newPage = {...newPage, d_4: {...newPage.d_4, value: keyDomaine, count: valueDomaine } };
-        
+
 
         //hauteur
         list.forEach(e => {
@@ -141,7 +141,7 @@ export default {
 
         keyHauteur.forEach(e => {
             pos = keyHauteur.indexOf(e)
-            if(e <= 1) {
+            if (e <= 1) {
                 newValueHauteur[0] += valueHauteur[pos]
             } else if (e <= 3) {
                 newValueHauteur[1] += valueHauteur[pos]
@@ -170,7 +170,7 @@ export default {
 
 
         newPage = {...newPage, d_5: {...newPage.d_5, value: newKeyHauteur, count: newValueHauteur } };
-        
+
 
         //circonférence
         list.forEach(e => {
@@ -186,7 +186,7 @@ export default {
 
 
         newPage = {...newPage, d_6: {...newPage.d_6, value: keyCirconf, count: valueCirconf } };
-       
+
         console.log(newPage)
         console.log("pré set")
 
@@ -200,15 +200,15 @@ export default {
         state.chart5.data.datasets[0].data = newPage.d_5.count;
         state.chart6.data.labels = newPage.d_6.value;
         state.chart6.data.datasets[0].data = newPage.d_6.count;
-        
-        state.chart2.update({duration: 800})
-        state.chart3.update({duration: 800})
-        // state.chart4.update({duration: 800})
-        state.chart5.update({duration: 800})
-        state.chart6.update({duration: 800})
+
+        state.chart2.update({ duration: 800 })
+        state.chart3.update({ duration: 800 })
+            // state.chart4.update({duration: 800})
+        state.chart5.update({ duration: 800 })
+        state.chart6.update({ duration: 800 })
 
         console.log(chart)
 
-        return {...state, page: newPage};
+        return {...state, page: newPage };
     }
 }
