@@ -7,6 +7,7 @@ import Line from '../components/Line'
 import SideBar from '../components/SideBar'
 import SmallNav from '../components/SmallNav'
 import CardHeader from '../components/CardHeader'
+import List from '../components/List'
 
 export default (state, actions) =>
     h('div', {class: 'd-flex', id: 'wrapper'}, [
@@ -35,7 +36,7 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-4 col-sm-6 col-xs-4 px-2'}, [
                     h('div', {class: 'card card-body', id: 'nb-arbre'}, [
-                      CardHeader({title: 'Nombre d\'arbres', infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?', image: { src:'src/img/information.svg', class:'svg'}}),
+                      CardHeader({title: 'Nombre d\'arbres', infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?'}),
                       h('h3', {}, '17636') // ici il faut appeler une info
                     ])
                   ]),
@@ -71,7 +72,10 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-5 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Domanialité', infos: 'L\'arbre est-il situé sur un espace public ou privé ?'}) // ici il faut appeler un graphe
+                      CardHeader({title: 'Domanialité', infos: 'L\'arbre est-il situé sur un espace public ou privé ?'}), // ici il faut appeler un graphe
+                      List({
+                        domain: 'Cimetière'
+                      })
                     ])
                   ]),
 

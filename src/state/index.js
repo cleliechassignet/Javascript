@@ -45,7 +45,7 @@ export default {
                 count: []
             },
             d_2: {
-                label: 'Domanialité'
+                label: 'Domanialité',
                 value: [],
                 count: []
             }

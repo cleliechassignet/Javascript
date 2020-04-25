@@ -170,8 +170,32 @@ body {
   margin: 3px;
 }
 
+.container{
+  margin-bottom: 4%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  width:80%;
+}
 
+.boxe{
+  background-color: rgb(169,218,168);
+  width: auto;
+  height: 30px;
+  border-radius: 2px;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.pourcent{
+  margin-top: 1em;
+}
+
+.domain{
+  margin-left: 2em;
+}
 
 /* RESPONSIVE */
 @media (min-width: 768px) {
