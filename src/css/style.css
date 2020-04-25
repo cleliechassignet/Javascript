@@ -46,7 +46,6 @@ body {
   width: 15rem;
 }
 
-
 #page-content-wrapper {
   min-width: 100vw;
   min-height: 100vh;
@@ -154,6 +153,7 @@ body {
   margin: 1vh auto;
 }
 
+
 .info, .reponse{
   z-index : 30;
   background-color: #79BE99;
@@ -197,6 +197,19 @@ body {
   margin-left: 2em;
 }
 
+
+.dot{
+  display: grid;
+  grid-template-columns: 2em 2em;
+  justify-content: right;
+}
+
+.bigDot{
+  display:flex;
+  flex-direction: row;
+}
+
+
 /* RESPONSIVE */
 @media (min-width: 768px) {
 
@@ -221,6 +234,7 @@ body {
   .small {
     display: none;
   }
+
 
   .info, .reponse {
     width:auto;
@@ -329,9 +343,13 @@ body {
   }
 
   .info, .reponse {
-    width:auto;
-    display: flex;
-    position: relative;
+    display: none;
+    /*width:auto;
+    position: relative;*/
+  }
+
+  .dot{
+    display: none;
   }
 
 }

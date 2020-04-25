@@ -8,6 +8,7 @@ import SideBar from '../components/SideBar'
 import SmallNav from '../components/SmallNav'
 import CardHeader from '../components/CardHeader'
 import List from '../components/List'
+import CardHeader2 from '../components/CardHeader2'
 
 export default (state, actions) =>
     h('div', {class: 'd-flex', id: 'wrapper'}, [
@@ -36,14 +37,24 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-4 col-sm-6 col-xs-4 px-2'}, [
                     h('div', {class: 'card card-body', id: 'nb-arbre'}, [
-                      CardHeader({title: 'Nombre d\'arbres', infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?'}),
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Nombre d\'arbres'}),
+                        h('div', {class: 'dot'},[
+                          CardHeader({display:1, infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?'}),
+                        ]),
+                      ]),
                       h('h3', {}, '17636') // ici il faut appeler une info
                     ])
                   ]),
 
                   h('div', {class: 'col-md-8 px-2'}, [
                     h('div', {class: 'card card-body flex-row'}, [
-                      CardHeader({title: 'Libellé', infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?', reponse: 'Test'}),
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Libellé'}),
+                        h('div', {class: 'dot'},[
+                          CardHeader({infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?', reponse: 'Dans le monde on compte 60 065 espèces d\'arbres'}),
+                        ]),
+                      ]),
                       BarChart({
                           labels: ['Arbre au 40 ecus', 'Cèdre', 'Chêne', 'Hêtre', 'Marronnier', 'Platane'],
                           data: [8, 8, 11, 12, 9, 32],
@@ -59,7 +70,12 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-7 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Localisation', infos: 'Chaque arbre est suivi par sa "carte d\'identité informatique",  elle regroupe toutes les informations nécessaires au suivi de l\'arbre par la ville.'}), // ici il faut appeler une info
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Localisation'}),
+                        h('div', {class: 'dot'},[
+                          CardHeader({display:1, infos: 'Chaque arbre est suivi par sa "carte d\'identité informatique",  elle regroupe toutes les informations nécessaires au suivi de l\'arbre par la ville.'})
+                        ]), // ici il faut appeler une info
+                      ]),
                       Pie({
                           labels: ['Paris Centre', 'Nord-Est', 'Bois de boulogne', 'Nord-Ouest', 'Sud-Ouest'],
                           data: [45, 10, 15, 25, 5],
@@ -72,7 +88,12 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-5 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Domanialité', infos: 'L\'arbre est-il situé sur un espace public ou privé ?'}), // ici il faut appeler un graphe
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Domanialité'}),
+                        h('div', {class: 'dot'},[
+                          CardHeader({display:1, infos: 'Mais à qui appartiennent donc tous ces arbres? Tu l\'auras compris la domanialité c\'est l\'appartenance de l\'arbre au domaine public ou privé.'}), // ici il faut appeler un graphe
+                        ]),
+                      ]),
                       List({
                         domain: 'Cimetière'
                       })
@@ -85,7 +106,12 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-6 px-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Hauteur (m)', infos: 'L\'arbre le plus haut de la ville est un Platane d\'Orient, il mesure 30 mètre et est centenaire !'}), // ici il faut appeler une info
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Hauteur (m)'}),
+                        h('div', {class: 'dot'},[
+                          CardHeader({display:1, infos: 'Un des plus haut arbre de la ville est un Platane d\'Orient, il mesure 30 mètres et est centenaire !'}), // ici il faut appeler une info
+                        ]),
+                      ]),
                       Line({
                           labels: ['4m', '7m', '10m', '13m', '16m', '19m', '22m', '25m','28m', '31m','34m', '+35m'],
                           data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
@@ -98,7 +124,12 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-6 px-2'}, [
                   h('div', {class: 'card card-body'}, [
-                    CardHeader({title: 'Circonférence (cm)', infos: 'L\'âge d\'un arbre peut être approximé grâce à sa circonférence ! Il suffit de prendre sa circonférence en cm et de la diviser par 2.5, n\'est-ce pas formidable ?'}), // ici il faut appeler un graphe
+                    h('div', {class: 'bigDot'},[
+                      CardHeader2({title: 'Circonférence (cm)'}),
+                      h('div', {class: 'dot'},[
+                        CardHeader({display:1, infos: 'L\'âge d\'un arbre peut être approximé grâce à sa circonférence ! Il suffit de prendre sa circonférence en cm et de la diviser par 2.5, n\'est-ce pas formidable ?'}), // ici il faut appeler un graphe
+                      ]),
+                    ]),
                     Line({
                         labels: ['50', '100', '150', '200', '250', '300', '350', '400','450', '500','550', '600'],
                         data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
@@ -133,7 +164,12 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-8 px-2 py-3 mt-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Localisation', infos: 'Voici la quantité d\'arbres que tu peux trouver par arrondissement. Est-ce que tu savais que le 1er arrondissement est celui qui contient le plus d\'arbres?'}), // ici il faut appeler une info
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Localisation'}),
+                        h('div', {class: 'dot'},[
+                          CardHeader({infos: 'Voici la quantité d\'arbres que tu peux trouver par arrondissement. A ton avis dans quel arrondissement trouve-t-on le plus d\'arbres ?', reponse: 'Dans le premier arrondissement !'}), // ici il faut appeler une info
+                        ]),
+                      ]),
                       Pie({
                           labels: ['XXe', 'XVe', 'Bois de boulogne', 'Ier', 'IIIe'],
                           data: [45, 10, 15, 25, 5],
@@ -146,9 +182,16 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-8 px-2 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Domanialité', infos: 'Mais à qui appartiennent donc tous ces arbres? Tu l\'auras compris la domanialité c\'est l\'appartenance de l\'arbre au domaine public ou privé. Et toi tu as combien d\'arbres chez toi?'}), // ici il faut appeler un graphe
-
-                      BarChart({
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Domanialité'}),
+                        h('div', {class: 'dot'},[
+                          CardHeader({display:1, infos: 'La domanialité est l\'appartenance de l\'arbre au domaine public ou privé. Et toi tu as combien d\'arbres chez toi?'}), // ici il faut appeler un graphe
+                        ]),
+                      ]),
+                      List({
+                        domain: 'Cimetière'
+                      })
+                      /*BarChart({
                           labels: [],
                           data:  [],
                           title: 'nombre d\'espaces verts par catégories',
@@ -165,7 +208,7 @@ export default (state, actions) =>
                                   }
                               })
                           }
-                      })
+                      })*/
                     ])
                   ]),
                 ]),
@@ -191,8 +234,13 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-8 px-2 py-3 mt-2'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Libellé', infos: 'Appelation française des arbres. (Eh oui la langue française est pleine de mots tordus). A ton avis, est-ce que le "Fremontondendron de Californie" existe ?'}), // ici il faut appeler une info
-                      BarChart({
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Libellé'}),
+                          h('div', {class: 'dot'},[
+                            CardHeader({infos: 'Appelation française des arbres. (Eh oui la langue française est pleine de mots tordus). A ton avis, est-ce que le "Fremontondendron de Californie" existe ?', reponse: 'Eh oui, cet arbre existe. C\'est un arbuste à fleurs jaunes originaire de Californie'}), // ici il faut appeler une info
+                          ]),
+                        ]),
+                        BarChart({
                           labels: ['Arbre au 40 ecus', 'Cèdre', 'Chêne', 'Hêtre', 'Marronnier', 'Platane'],
                           data: [8, 8, 11, 12, 9, 32],
                           title: 'Type d\'arbre',
@@ -204,8 +252,13 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-8 px-2 mb-3 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Hauteur (m)', infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?'}), // ici il faut appeler un graphe
-                      Line({
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Hauteur (m)'}),
+                          h('div', {class: 'dot'},[
+                            CardHeader({infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?'}), // ici il faut appeler un graphe
+                          ]),
+                      ]),
+                        Line({
                           labels: ['4m', '7m', '10m', '13m', '16m', '19m', '22m', '25m','28m', '31m','34m', '+35m'],
                           data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
                           title: ' ',
@@ -217,8 +270,13 @@ export default (state, actions) =>
 
                   h('div', {class: 'col-md-8 px-2 mt-3'}, [
                     h('div', {class: 'card card-body'}, [
-                      CardHeader({title: 'Circonférence (cm)', infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur'}), // ici il faut appeler un graphe
-                      Line({
+                      h('div', {class: 'bigDot'},[
+                        CardHeader2({title: 'Circonférence (cm)'}),
+                          h('div', {class: 'dot'},[
+                            CardHeader({infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur'}), // ici il faut appeler un graphe
+                          ]),
+                      ]),
+                        Line({
                           labels: ['50', '100', '150', '200', '250', '300', '350', '400','450', '500','550', '600'],
                           data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
                           title: ' ',
