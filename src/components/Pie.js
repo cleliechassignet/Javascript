@@ -23,7 +23,7 @@ export default (props) =>
                 c.canvas.style.height = props.height + '%'
                 c.canvas.style.width = props.width + '%'
                 // si une fonction de callback est passé en parametre de mes props alors je l'exécute
-                //if(props.callBack !== undefined) { props.callBack(c) }
+                if(props.callBack !== undefined) { props.callBack(c) }
             },
             style: 'background-color: #F5F5F5;'
         })

@@ -28,7 +28,7 @@ export default (props) =>
                 c.canvas.style.width = props.width + '%'
                 c.options.title.display = "none"
                 // si une fonction de callback est passé en parametre de mes props alors je l'exécute
-                //if(props.callBack !== undefined) { props.callBack(c) }
+                if(props.callBack !== undefined) { props.callBack(c) }
             },
             style: 'background-color: #F5F5F5;'
         })

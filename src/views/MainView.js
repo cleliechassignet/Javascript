@@ -11,7 +11,7 @@ import List from '../components/List'
 import CardHeader2 from '../components/CardHeader2'
 
 export default (state, actions) =>
-    h('div', {class: 'd-flex', id: 'wrapper'}, [
+    h('div', {class: 'd-flex', id: 'wrapper', oncreate: () => {actions.getDataFromApi()}}, [
         SideBar({
           btn1Onclick: () => actions.setCount(0),
           btn2Onclick: () => actions.setCount(1),
@@ -27,11 +27,11 @@ export default (state, actions) =>
 
             h('div', {class: 'main-content col-lg-8 col-md-10 col-sm-11 col-xs-10 pb-2'}, [
 
-                SmallNav({
-                  btn1bOnclick: () => actions.setCount(0),
-                  btn2bOnclick: () => actions.setCount(1),
-                  btn3bOnclick: () => actions.setCount(2)
-                }),
+              SmallNav({
+                btn1bOnclick: () => actions.setCount(0),
+                btn2bOnclick: () => actions.setCount(1),
+                btn3bOnclick: () => actions.setCount(2)
+              }),
 
                 h('div', {class: 'row h-onethird mt-2 p-2'}, [
 
@@ -64,6 +64,47 @@ export default (state, actions) =>
                       }),
                     ])
                   ]),
+                ]),
+                //LIBELLE
+                h('div', {class: 'col-md-8 px-2'}, [
+                  h('div', {class: 'card card-body flex-row'}, [
+                    CardHeader({title: 'Libellé', infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?', reponse: 'Test'}),
+                    BarChart({
+                      callBack:(chart2) => {
+                        actions.registerChart2(chart2)
+                      },
+                      labels: state.page.d_2.value,
+                      data: state.page.d_2.count,
+                      title: 'Type d\'arbre',
+                      width: 100,
+                      height: 100
+                    }),
+                  ])
+                ]),
+              ]),
+              
+              h('div', {class: 'row h-onethird p-2 mt-3'}, [
+                //LOCALISATION
+                h('div', {class: 'col-md-7 px-2'}, [
+                  h('div', {class: 'card card-body'}, [
+                    CardHeader({title: 'Localisation', infos: 'Chaque arbre est suivi par sa "carte d\'identité informatique",  elle regroupe toutes les informations nécessaires au suivi de l\'arbre par la ville.'}), // ici il faut appeler une info
+                    Pie({
+                      callBack:(chart3) => {
+                        actions.registerChart3(chart3)
+                      },
+                      labels: state.page.d_3.value,
+                      data: state.page.d_3.count,
+                      title: 'Les arrondissements avec le plus d\'arbres',
+                      width: 100,
+                      height: 100
+                    })
+                  ])
+                ]),
+                //DOMANIALITE
+                h('div', {class: 'col-md-5 px-2'}, [
+                  h('div', {class: 'card card-body'}, [
+                    CardHeader({title: 'Domanialité', infos: 'L\'arbre est-il situé sur un espace public ou privé ?'}) // ici il faut appeler un graphe
+                  ])
                 ]),
 
                 h('div', {class: 'row h-onethird p-2 mt-3'}, [
@@ -131,15 +172,17 @@ export default (state, actions) =>
                       ]),
                     ]),
                     Line({
-                        labels: ['50', '100', '150', '200', '250', '300', '350', '400','450', '500','550', '600'],
-                        data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
+                      callBack:(chart) => {
+                        actions.registerChart6(chart)
+                      },
+                        labels: state.page.d_6.value,
+                        data: state.page.d_6.count,
                         title: ' ',
                         width: 100,
                         height: 100
                     })
                   ])
                 ])
-
               ])
             ])
           ]),
@@ -198,7 +241,7 @@ export default (state, actions) =>
                           width: 400,
                           height: 200,
                           callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
-                              actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
+                              actions.getDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
                                   count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
                                   callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
                                       // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
