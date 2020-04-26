@@ -27,8 +27,8 @@ export default {
         console.log("test")
         return {...state, chart3: chart }
     },
-    registerChart4: chart => state => {
-        return {...state, chart4: chart }
+    registerChart4: state => {
+        return {...state}
     },
     registerChart5: chart => state => {
         return {...state, chart5: chart }
@@ -257,8 +257,8 @@ export default {
         state.chart2.data.datasets[0].data = newPage.d_2.count;
         state.chart3.data.labels = newPage.d_3.value;
         state.chart3.data.datasets[0].data = newPage.d_3.count;
-        // state.chart4.data.labels = newPage.d_4.value;
-        // state.chart4.data.datasets[0].data = newPage.d_4.count;
+        state.chart4.labels = newPage.d_4.value;
+        state.chart4.data = newPage.d_4.count;
         state.chart5.data.labels = newPage.d_5.value;
         state.chart5.data.datasets[0].data = newPage.d_5.count;
         state.chart6.data.labels = newPage.d_6.value;
@@ -266,7 +266,7 @@ export default {
 
         state.chart2.update({ duration: 800 })
         state.chart3.update({ duration: 800 })
-            // state.chart4.update({duration: 800})
+        //state.chart4.update({ duration: 800 })
         state.chart5.update({ duration: 800 })
         state.chart6.update({ duration: 800 })
 

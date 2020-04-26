@@ -102,7 +102,11 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             List({
-                                domain: 'Cimetière'
+                                callBack: (chart4) => {
+                                    actions.registerChart4(chart4)
+                                },
+                                labels: state.page.d_4.value,
+                                data: state.page.d_4.count
                             })
                         ])
                     ]),
@@ -269,7 +273,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                             h('div', { class: 'bigDot' }, [
                                 CardHeader2({ title: 'Hauteur (m)' }),
                                 h('div', { class: 'dot' }, [
-                                    CardHeader({ infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?' }), // ici il faut appeler un graphe
+                                    CardHeader({ infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?', reponse: state.page.d_5.moyenne }), // ici il faut appeler un graphe
                                 ]),
                             ]),
                             Line({
@@ -287,7 +291,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                             h('div', { class: 'bigDot' }, [
                                 CardHeader2({ title: 'Circonférence (cm)' }),
                                 h('div', { class: 'dot' }, [
-                                    CardHeader({ infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur' }), // ici il faut appeler un graphe
+                                    CardHeader({display:1, infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur' }), // ici il faut appeler un graphe
                                 ]),
                             ]),
                             Line({
