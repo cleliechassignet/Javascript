@@ -150,8 +150,9 @@ body {
 
 #nb-arbre>h3 {
   font-size: 4.5vw;
-  margin: 1vh auto;
+  margin-top: 15%;
 }
+
 
 
 .info, .reponse{
@@ -169,6 +170,7 @@ body {
   color: #79BE99;
   margin: 3px;
 }
+
 
 .container{
   margin-bottom: 4%;
@@ -244,8 +246,15 @@ body {
     width:auto;
     display: none;
     position: absolute;
-    left: 50%;
-    top : 0;
+    left:0;
+    top : 20%;
+  }
+
+
+  #nb-arbre .info {
+    position: absolute;
+    left:0;
+    top: 20%;
   }
 
   .svg:hover~.info {

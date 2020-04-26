@@ -4,7 +4,7 @@ import Chart from 'chart.js'
 
 // basic componant with props
 export default (props) =>
-h('div', { class: 'col-md-10' }, [
+h('div', { class: 'col-md-10 m-auto' }, [
     h('canvas', {
         oncreate: (element) => {
             const ctx = element.getContext('2d')

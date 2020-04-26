@@ -26,6 +26,22 @@ h('div', {}, [
                 options:{
                     legend:{
                         display:false
+                    },
+                    scales: {
+                      yAxes: [{
+                        scaleLabel: {
+                          display: true,
+                          labelString: 'Nombre d\'arbres',
+                          fontSize: 12
+                        }
+                      }],
+                      xAxes: [{
+                        scaleLabel: {
+                          display: true,
+                          labelString: props.axeLabel,
+                          fontSize: 12
+                        }
+                      }]
                     }
                 }
             })

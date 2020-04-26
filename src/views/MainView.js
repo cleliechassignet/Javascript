@@ -49,7 +49,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
 
                     // LIBELLE
                     h('div', { class: 'col-md-8 px-2' }, [
-                        h('div', { class: 'card card-body flex-row' }, [
+                        h('div', { class: 'card card-body flex-column' }, [
                             h('div', { class: 'bigDot' }, [
                                 CardHeader2({ title: 'Libellé' }),
                                 h('div', { class: 'dot' }, [
@@ -126,6 +126,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 },
                                 labels: state.page[0].d_5.value,
                                 data: state.page[0].d_5.count,
+                                axeLabel: 'Hauteur en mètre',
                                 title: ' ',
                                 width: 100,
                                 height: 100
@@ -147,6 +148,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 },
                                 labels: state.page[0].d_6.value,
                                 data: state.page[0].d_6.count,
+                                axeLabel: 'Circonférence en cm',
                                 title: ' ',
                                 width: 100,
                                 height: 100
