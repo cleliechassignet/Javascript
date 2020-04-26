@@ -9,7 +9,7 @@ export default (props) => {
             h('div', {class : "container"}, [
                 h('div', {class: 'boxe'}, [
                     h('div', {class: 'pourcent'},[
-                        h('p', {}, props.data[i])
+                        h('p', {}, props.data[i] /100 + " %")
                     ])
                 ]) , 
                 h('div', {class: 'domain'}, [

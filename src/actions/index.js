@@ -165,11 +165,8 @@ export default {
         let keyDomaine = Object.keys(domaine)
         let valueDomaine = Object.values(domaine)
 
-        let newKeyDom = ["Alignement", "Cimetière", "Jardin", "Etablissements administratifs et scolaires"]
+        const newKeyDom = ["Alignement", "Cimetière", "Jardin", "Etablissements administratifs et scolaires"]
         let newValueDom = [0, 0, 0, 0]
-
-        newPage[0] = {...newPage[0], d_4: {...newPage[0].d_4, value: newKeyDom, count: newValueDom } }
-        newPage[1] = {...newPage[1], d_8: {...newPage[1].d_8, value: newKeyDom, count: newValueDom } }
 
         keyDomaine.forEach(e => {
             pos = keyDomaine.indexOf(e)
@@ -184,6 +181,9 @@ export default {
             }
         })
 
+        newPage[0] = {...newPage[0], d_4: {...newPage[0].d_4, value: newKeyDom, count: newValueDom } }
+        newPage[1] = {...newPage[1], d_8: {...newPage[1].d_8, value: newKeyDom, count: newValueDom } }
+        
         //hauteur
         list.forEach(e => {
             if (hauteur[e.fields.hauteurenm] === undefined) {
