@@ -2,11 +2,16 @@ const webpack = require('webpack')
 const path = require('path')
 const pkg = require('./package.json')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const libraryName = pkg.name
 
 const plugins = [
   new MiniCssExtractPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
+new HtmlWebpackPlugin({
+                hash: true,
+                filename: 'index.html'
+            })
 ]
 
 const config = {
@@ -16,7 +21,7 @@ const config = {
   ],
   devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, './lib'),
+    path: path.resolve(__dirname, './out'),
     filename: 'bundle.js',
     library: libraryName,
     libraryTarget: 'umd',
@@ -37,7 +42,15 @@ const config = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
+      },
+       {
+            test: /\.(png|jpg|gif|svg)$/,
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]?[hash]'
+            }
+        }
+
     ]
   },
   resolve: {
@@ -45,6 +58,7 @@ const config = {
     extensions: ['.json', '.js']
   },
   plugins: plugins
+            
 }
 
 module.exports = config
