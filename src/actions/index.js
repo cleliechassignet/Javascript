@@ -36,9 +36,6 @@ export default {
     registerChart7: chart => state => {
         return {...state, chart7: chart }
     },
-    registerChart8: chart => state => {
-        return {...state, chart8: chart }
-    },
     registerChart9: chart => state => {
         return {...state, chart9: chart }
     },
@@ -170,8 +167,9 @@ export default {
 
         let newKeyDom = ["Alignement", "Cimetière", "Jardin", "Etablissements administratifs et scolaires"]
         let newValueDom = [0, 0, 0, 0]
-        newPage[0] = {...newPage[0], d_4: {...newPage[0].d_4, value: keyDomaine, count: valueDomaine } };
-        newPage[1] = {...newPage[1], d_8: {...newPage[1].d_8, value: keyDomaine, count: valueDomaine } };
+
+        newPage[0] = {...newPage[0], d_4: {...newPage[0].d_4, value: newKeyDom, count: newValueDom } }
+        newPage[1] = {...newPage[1], d_8: {...newPage[1].d_8, value: newKeyDom, count: newValueDom } }
 
         keyDomaine.forEach(e => {
             pos = keyDomaine.indexOf(e)
@@ -293,16 +291,12 @@ export default {
         state.chart2.data.datasets[0].data = newPage[0].d_2.count;
         state.chart3.data.labels = newPage[0].d_3.value;
         state.chart3.data.datasets[0].data = newPage[0].d_3.count;
-        state.chart4.labels = newPage[0].d_4.value;
-        state.chart4.data = newPage[0].d_4.count;
         state.chart5.data.labels = newPage[0].d_5.value;
         state.chart5.data.datasets[0].data = newPage[0].d_5.count;
         state.chart6.data.labels = newPage[0].d_6.value;
         state.chart6.data.datasets[0].data = newPage[0].d_6.count;
         state.chart7.data.labels = newPage[1].d_7.value;
         state.chart7.data.datasets[0].data = newPage[1].d_7.count;
-        // state.chart8.data.labels = newPage[1].d_8.value;
-        // state.chart8.data.datasets[0].data = newPage[1].d_8.count;
         state.chart9.data.labels = newPage[1].d_9.value;
         state.chart9.data.datasets[0].data = newPage[1].d_9.count;
         state.chart10.data.labels = newPage[2].d_10.value;
@@ -315,7 +309,6 @@ export default {
         state.chart5.update({ duration: 800 })
         state.chart6.update({ duration: 800 })
         state.chart7.update({ duration: 800 })
-            // state.chart8.update({ duration: 800 })
         state.chart9.update({ duration: 800 })
         state.chart10.update({ duration: 800 })
         state.chart11.update({ duration: 800 })

@@ -102,8 +102,8 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             List({
-                                labels: state.page.d_4.value,
-                                data: state.page.d_4.count
+                                labels: state.page[0].d_4.value,
+                                data: state.page[0].d_4.count
                             })
                         ])
                     ]),
@@ -175,7 +175,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                 }),
 
                 h('div', { class: 'row h-onesecond p-2 mt-3, row justify-content-center align-items-center' }, [
-                    // LIBELLE
+                    // LOCALISATION
                     h('div', { class: 'col-md-8 px-2 py-3 mt-2' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
@@ -196,7 +196,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                             })
                         ])
                     ]),
-
+                    //DOMANIALITE
                     h('div', { class: 'col-md-8 px-2 mt-3' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
@@ -206,8 +206,8 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             List({
-                                labels: state.page.d_4.value,
-                                data: state.page.d_4.count
+                                labels: state.page[1].d_8.value,
+                                data: state.page[1].d_8.count
                             })
                         ])
                     ]),
