@@ -51,7 +51,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                     h('div', { class: 'col-md-8 px-2' }, [
                         h('div', { class: 'card card-body flex-column' }, [
                             h('div', { class: 'bigDot' }, [
-                                CardHeader2({ title: 'Libellé' }),
+                                CardHeader2({ title: 'Libellé *' }),
                                 h('div', { class: 'dot' }, [
                                     CardHeader({ infos: 'On trouve à peu près 200 espèces d\'arbres à Paris. D\'après toi, combien y en a t-il dans le monde entier ?', reponse: 'Dans le monde on compte 60 065 espèces d\'arbres' }),
                                 ]),
@@ -75,7 +75,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                     h('div', { class: 'col-md-7 px-2' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
-                                CardHeader2({ title: 'Localisation' }),
+                                CardHeader2({ title: 'Localisation *' }),
                                 h('div', { class: 'dot' }, [
                                     CardHeader({ display: 1, infos: 'Chaque arbre est suivi par sa "carte d\'identité informatique",  elle regroupe toutes les informations nécessaires au suivi de l\'arbre par la ville.' })
                                 ]), // ici il faut appeler une info
@@ -96,7 +96,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                     h('div', { class: 'col-md-5 px-2' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
-                                CardHeader2({ title: 'Domanialité' }),
+                                CardHeader2({ title: 'Domanialité *' }),
                                 h('div', { class: 'dot' }, [
                                     CardHeader({ display: 1, infos: 'Mais à qui appartiennent donc tous ces arbres? Tu l\'auras compris la domanialité c\'est l\'appartenance de l\'arbre au domaine public ou privé.' }), // ici il faut appeler un graphe
                                 ]),
@@ -115,7 +115,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                     h('div', { class: 'col-md-6 px-2' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
-                                CardHeader2({ title: 'Hauteur (m)' }),
+                                CardHeader2({ title: 'Hauteur (m) *' }),
                                 h('div', { class: 'dot' }, [
                                     CardHeader({ display: 1, infos: 'Un des plus haut arbre de la ville est un Platane d\'Orient, il mesure 30 mètres et est centenaire !' }), // ici il faut appeler une info
                                 ]),
@@ -137,7 +137,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                     h('div', { class: 'col-md-6 px-2' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
-                                CardHeader2({ title: 'Circonférence (cm)' }),
+                                CardHeader2({ title: 'Circonférence (cm) *' }),
                                 h('div', { class: 'dot' }, [
                                     CardHeader({ display: 1, infos: 'L\'âge d\'un arbre peut être approximé grâce à sa circonférence ! Il suffit de prendre sa circonférence en cm et de la diviser par 2.5, n\'est-ce pas formidable ?' }), // ici il faut appeler un graphe
                                 ]),
@@ -155,7 +155,9 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                             })
                         ])
                     ])
-
+                ]),
+                h('div', {class: 'row mt-3 mr-3 justify-content-end'}, [
+                  h('p', {class: ''}, '*Les données sont calculées sur un échantillon de 10 000 arbres')
                 ])
             ])
         ]),
