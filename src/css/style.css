@@ -171,6 +171,7 @@ body {
 }
 
 .container{
+  margin-top: 0.5em;
   margin-bottom: 4%;
   display: grid;
   grid-template-columns: 40% 60%;
