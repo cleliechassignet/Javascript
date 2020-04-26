@@ -43,7 +43,9 @@
     "yargs": "^15.0.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --port 3000"
+    "start": "webpack-dev-server --port 3000",
+    "dev": "webpack-dev-server --color --mode development",
+    "release": "webpack --mode production"
   },
   "repository": {
     "type": "git",

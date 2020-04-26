@@ -1,50 +1,80 @@
 const webpack = require('webpack')
 const path = require('path')
-const pkg = require('./package.json')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const libraryName = pkg.name
+const HtmlWebPackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') // extract css in file
 
-const plugins = [
-  new MiniCssExtractPlugin(),
-  new webpack.optimize.ModuleConcatenationPlugin(),
-]
+module.exports = (env, argv) => {
+  const devMode = argv.mode !== 'production'
+  console.log('devMode: ', devMode)
 
-const config = {
-  entry: [
-    path.resolve(__dirname, './src/index.js'),
-    path.resolve(__dirname, './src/css/style.css')
-  ],
-  devtool: 'source-map',
-  output: {
-    path: path.resolve(__dirname, './lib'),
-    filename: 'bundle.js',
-    library: libraryName,
-    libraryTarget: 'umd',
-    umdNamedDefine: true
-  },
-  module: {
-    rules: [
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/
-      },
-      {
-        test: /(\.jsx|\.js)$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
+  // constant define the modules used to process the css
+  // - postcss-loader to add prefixer for browsers compatibility
+  // - css-loader to understand css with webpack
+  // - MiniCssExtractPlugin to extract final css in file or style-loader to inject in html directly in dev
+  const cssLoaders = [
+      devMode ? 'style-loader' : // fallback to style-loader in development
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        hmr: devMode, // only enable hot reload in development
+        reloadAll: true // if hmr does not work, this is a forceful method
       }
-    ]
-  },
-  resolve: {
-    modules: [path.resolve('./node_modules'), path.resolve('./src')],
-    extensions: ['.json', '.js']
-  },
-  plugins: plugins
-}
+    },
+    {
+      loader: 'css-loader',
+      options: { sourceMap: devMode } // for dev debug
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        sourceMap: devMode, // for dev debug
+        ident: 'postcss',
+        plugins: (loader) => [require('autoprefixer')()] // auto prefix css for web browsers compatibility
+      }
+    }
+  ]
 
-module.exports = config
+  const config = {
+    entry: [path.resolve(__dirname, './src/index.js')],  
+    devtool: 'source-map', // for dev debug
+    watch: devMode, // for update
+    output: {
+      path: path.resolve(__dirname, './docs'),
+      filename: 'bundle.js'
+    },
+    devServer: {
+      contentBase: path.resolve(__dirname, './out'),
+      port: 3000
+    },
+    module: {
+      rules: [
+        { // for syntaxe check
+          enforce: "pre",
+          test: /(\.jsx|\.js)$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules/
+        },
+        { // for  web browsers compatibility
+          test: /(\.jsx|\.js)$/,
+          loader: 'babel-loader',
+          exclude: /(node_modules)/
+        },
+        {
+          test: /.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
+     	 }
+      ]
+    },
+    plugins: [
+      new HtmlWebPackPlugin({
+        template: "src/index.html",
+        filename: "index.html"
+      }),
+      new MiniCssExtractPlugin({
+        filename: devMode ? '[name].css' : '[name].[hash].css',
+        chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
+      })
+    ]
+  }
+  return config
+}

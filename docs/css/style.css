@@ -1,0 +1,366 @@
+/*
+Site créé par Clélie Chassignet, Zoé Durand, Mélissande Gaillot, Flora Mallet et Maéva Rosenberg
+Dans le cadre d'un projet de développement web en IMAC
+*/
+
+ /*
+COULEURS :
+Blanc : #F5F5F5
+Vert clair : #CFF1A2
+Vert moyen : #A9DAA8
+Vert moyen foncé : #79BE99
+Vert très foncé : #3C8784
+Bleu marine : 0B496B
+Violet clair : #959FB9
+Orange : #D49375
+ */
+
+
+body {
+  overflow-x: hidden;
+  background: url('../img/background.png') center/115% repeat-y;
+  font-family : 'Barlow', sans-serif;
+}
+
+/* TEMPLATE */
+#wrapper {
+  min-height: 100vh;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+/*Personnalisation */
+
+
+.arrow-right {
+  position: absolute;
+  left: 240px;
+  top : 0px;
+  width: 0;
+  height: 0;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid rgba(255, 255, 255, 0.975);
+}
+
+.list-group {
+  margin-top: 40vh;
+}
+
+.list-group-item {
+  font-size: 1.5rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+.border-bottom:after,  .border-top:before{
+  content : "";
+  position: absolute;
+  left    : 25%;
+  height  : 1px;
+  width   : 50%;  /* or 100px */
+  border-bottom : 2px solid #3C8784 !important;
+}
+
+.border-bottom:after {
+  bottom  : 0;
+}
+
+.border-top:before {
+  top  : 0;
+}
+
+.selected {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top : 2px solid #3C8784 !important;
+    border-bottom : 2px solid #3C8784 !important;
+    font-weight: 600;
+}
+
+
+.main-title {
+  width: 25vw;
+  height: 6vh;
+  align-self: flex-end;
+  margin-right : 16vw;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.main-content {
+  min-height: 80vh;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+}
+
+.h-onethird {
+  height: 33%;
+}
+
+.h-onehalf {
+  height: 48%;
+}
+
+.card {
+  height: 100%;
+  border-radius: 12px;
+  background-color: #F5F5F5;
+  opacity: 1.0;
+}
+
+.chartjs-size-monitor {
+  max-height: 100%;
+  max-width: 90%;
+}
+
+#nb-arbre {
+  background-color: #3C8784;
+  color : #FFFFFF;
+}
+
+#nb-arbre>h3 {
+  font-size: 4.5vw;
+  margin-top: 15%;
+}
+
+
+
+.info, .reponse{
+  z-index : 30;
+  background-color: #79BE99;
+  color: white;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+.svg, .png {
+  max-width: 15px;
+  position: relative;
+  left:10px;
+  color: #79BE99;
+  margin: 3px;
+}
+
+
+.container{
+  margin-top: 0.5em;
+  margin-bottom: 4%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  width:80%;
+}
+
+.boxe{
+  background-color: rgb(169,218,168);
+  width: auto;
+  height: 35px;
+  border-radius: 2px;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pourcent{
+  margin-top: 1em;
+  font-size: 0.8em;
+}
+
+.domain{
+  margin-left: 2em;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+
+
+.dot{
+  display: grid;
+  grid-template-columns: 2em 2em;
+  justify-content: right;
+}
+
+.bigDot{
+  display:flex;
+  flex-direction: row;
+}
+
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+
+  .container-fluid {
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+    margin: 5vh 0;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+
+  .small {
+    display: none;
+  }
+
+
+  .info, .reponse {
+    width:auto;
+    display: none;
+    position: absolute;
+    left:0;
+    top : 20%;
+  }
+
+
+  #nb-arbre .info {
+    position: absolute;
+    left:0;
+    top: 20%;
+  }
+
+  .svg:hover~.info {
+    display: flex;
+  }
+
+  .png:hover~.reponse {
+    display: flex;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  body {
+    background: url('../img/background.png') center/250% ;
+  }
+
+  #sidebar-wrapper, .main-title {
+    display : none;
+  }
+
+  .container-fluid {
+    min-height: 100vh !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5vh;
+  }
+
+  .main-content {
+    margin-top : 5vh;
+    margin-bottom: 5vh;
+  }
+
+  .small-main-title {
+    font-size: 10vw;
+    width: 100%;
+    text-align: center;
+  }
+
+  .small-navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    height: 7vh;
+    font-size: 1.5rem;
+    margin : auto;
+  }
+
+  .small-navbar>a{
+    font-size: 3.5vw;
+    color: black;
+    height: 100%;
+    padding : 2.5vh;
+    padding-top : 1.5vh;
+    border: 2px solid #3C8784;
+  }
+
+  .small-navbar>a:nth-of-type(1){
+    padding-left: 3vw;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    border-left: 2px solid #3C8784;
+  }
+
+  .small-navbar>a:nth-of-type(3){
+    padding-right: 1vw;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    border-right: 2px solid #3C8784;
+  }
+
+  .small-navbar-selected{
+    color: white !important;
+    background-color: #3C8784;
+    border : 2px solid #3C8784;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .h-onethird {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .h-onethird>div {
+    margin-bottom: 2vh;
+  }
+
+  #nb-arbre>h3 {
+    font-size: 12vw;
+  }
+
+  .info, .reponse {
+    display: none;
+  }
+
+  .dot{
+    display: none;
+  }
+
+}

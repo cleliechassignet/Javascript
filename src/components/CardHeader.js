@@ -4,8 +4,8 @@ import { h } from 'hyperapp'
 export default (props) => {
     const arrayButton=[];
     let displayButton = props.display;
-    arrayButton[0]= h('p', {}, ['', h('img', {src: 'src/img/information.svg', class:'svg'}, ''), h('div', {class: 'info'}, [h('p', {}, props.infos)])])
-    arrayButton[1]= h('p', {}, ['',h('img', {src: 'src/img/R.png', class:'png'}, ''), h('div', {class: 'reponse'}, [h('p', {}, props.reponse)])])
+    arrayButton[0]= h('p', {}, ['', h('img', {src: './img/information.svg', class:'svg'}, ''), h('div', {class: 'info'}, [h('p', {}, props.infos)])])
+    arrayButton[1]= h('p', {}, ['',h('img', {src: './img/R.png', class:'png'}, ''), h('div', {class: 'reponse'}, [h('p', {}, props.reponse)])])
     if (displayButton == 1){
         return arrayButton[0];
     }
