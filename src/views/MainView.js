@@ -102,11 +102,8 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             List({
-                                callBack: (chart4) => {
-                                    actions.registerChart4(chart4)
-                                },
-                                labels: state.page[0].d_4.value,
-                                data: state.page[0].d_4.count
+                                labels: state.page.d_4.value,
+                                data: state.page.d_4.count
                             })
                         ])
                     ]),
@@ -209,26 +206,9 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             List({
-                                domain: 'Cimetière'
+                                labels: state.page.d_4.value,
+                                data: state.page.d_4.count
                             })
-                            /*BarChart({
-                                labels: [],
-                                data:  [],
-                                title: 'nombre d\'espaces verts par catégories',
-                                width: 400,
-                                height: 200,
-                                callBack: (chart) => { // je défini ici une fonction de callback qui va être appellé après la création de mon diagramme
-                                    actions.getEspaceVertsDataFromApi({ // je fait un appel à l'action getEspaceVertsDataFromApi qui fait un appel à une base de donnée
-                                        count: 200, // je lui passe en paramètre le nombre de ligne que je veux appeler via mon api
-                                        callBack: (labels, data) => { // et une autre fonction de callBack qui sera appellé seulement après que mes données aient été reçus
-                                            // ce qui me permet de mettre à jour l'affichage de mon diagramme qu'à ce moment là, une fois les données reçus
-                                            chart.data.labels = labels
-                                            chart.data.datasets[0].data = data
-                                            chart.update({duration: 800})
-                                        }
-                                    })
-                                }
-                            })*/
                         ])
                     ]),
                 ]),

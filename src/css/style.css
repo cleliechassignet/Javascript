@@ -180,7 +180,7 @@ body {
 .boxe{
   background-color: rgb(169,218,168);
   width: auto;
-  height: 30px;
+  height: 35px;
   border-radius: 2px;
   margin-top: auto;
   margin-bottom: auto;
@@ -191,10 +191,13 @@ body {
 
 .pourcent{
   margin-top: 1em;
+  font-size: 0.8em;
 }
 
 .domain{
   margin-left: 2em;
+  font-size: 0.8em;
+  margin-top: 0.5em;
 }
 
 
@@ -330,7 +333,6 @@ body {
   }
 
   .h-onethird {
-    /* min-height: 40vh; */
     justify-content: center;
     align-items: center;
   }
@@ -345,8 +347,6 @@ body {
 
   .info, .reponse {
     display: none;
-    /*width:auto;
-    position: relative;*/
   }
 
   .dot{

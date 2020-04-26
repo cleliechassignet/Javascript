@@ -27,9 +27,6 @@ export default {
         console.log("test")
         return {...state, chart3: chart }
     },
-    registerChart4: state => {
-        return {...state }
-    },
     registerChart5: chart => state => {
         return {...state, chart5: chart }
     },
@@ -171,10 +168,23 @@ export default {
         let keyDomaine = Object.keys(domaine)
         let valueDomaine = Object.values(domaine)
 
+        let newKeyDom = ["Alignement", "Cimetière", "Jardin", "Etablissements administratifs et scolaires"]
+        let newValueDom = [0, 0, 0, 0]
         newPage[0] = {...newPage[0], d_4: {...newPage[0].d_4, value: keyDomaine, count: valueDomaine } };
         newPage[1] = {...newPage[1], d_8: {...newPage[1].d_8, value: keyDomaine, count: valueDomaine } };
 
-
+        keyDomaine.forEach(e => {
+            pos = keyDomaine.indexOf(e)
+            if (e === "Alignement") {
+                newValueDom[0] += valueDomaine[pos]
+            } else if (e === "CIMETIERE") {
+                newValueDom[1] += valueDomaine[pos]
+            } else if (e === "Jardin") {
+                newValueDom[2] += valueDomaine[pos]
+            } else if (e === "DASCO" || e === "DFPE" || e==="DJS") {
+                newValueDom[3] += valueDomaine[pos]
+            }
+        })
 
         //hauteur
         list.forEach(e => {
@@ -219,12 +229,13 @@ export default {
                 newValueHauteur[11] += valueHauteur[pos]
             }
         })
-
-        newValueHauteur.forEach(e => {
-            moyenneHauteur += e
-        })
+        
+        for(let i=0;i<newValueHauteur.length;i++){
+            moyenneHauteur += newValueHauteur[i]*newKeyHauteur[i];
+        }
 
         moyenneHauteur = moyenneHauteur / 10000
+        console.log("MoyenneHauteur : " + moyenneHauteur)
 
 
         newPage[0] = {...newPage[0], d_5: {...newPage[0].d_5, value: newKeyHauteur, count: newValueHauteur, moyenne: moyenneHauteur } };
@@ -301,7 +312,6 @@ export default {
 
         state.chart2.update({ duration: 800 })
         state.chart3.update({ duration: 800 })
-            //state.chart4.update({ duration: 800 })
         state.chart5.update({ duration: 800 })
         state.chart6.update({ duration: 800 })
         state.chart7.update({ duration: 800 })
