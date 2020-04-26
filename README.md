@@ -31,4 +31,4 @@ Le site de type dashboard "Les arbres à Paris" met en forme de manière graphiq
 
 # Remerciements
 
-L'équipe remercie Victor Viale, Enguerrand de Smet et Jules, pour leur aide précieuse dans la réalisation de ce projet.
+L'équipe remercie Victor Viale, Enguerrand de Smet et Jules Fouchy, pour leur aide précieuse dans la réalisation de ce projet.
