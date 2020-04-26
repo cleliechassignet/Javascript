@@ -43,7 +43,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                     CardHeader({ display: 1, infos: 'Savais-tu que la ville de Paris s\'est donné en 2014 pour objectif de planter 20 000 arbres d\'ici fin 2020 ? D\'après toi, la ville réussira-t-elle son défi ?' }),
                                 ]),
                             ]),
-                            h('h3', {}, state.page.d_1.rows)
+                            h('h3', {}, state.page[0].d_1.rows)
                         ])
                     ]),
 
@@ -57,11 +57,11 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             BarChart({
-                                callBack: (chart2) => {
-                                    actions.registerChart2(chart2)
+                                callBack: (chart) => {
+                                    actions.registerChart2(chart)
                                 },
-                                labels: state.page.d_2.value,
-                                data: state.page.d_2.count,
+                                labels: state.page[0].d_2.value,
+                                data: state.page[0].d_2.count,
                                 title: 'Type d\'arbre',
                                 width: 100,
                                 height: 100
@@ -81,11 +81,11 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]), // ici il faut appeler une info
                             ]),
                             Pie({
-                                callBack: (chart3) => {
-                                    actions.registerChart3(chart3)
+                                callBack: (chart) => {
+                                    actions.registerChart3(chart)
                                 },
-                                labels: state.page.d_3.value,
-                                data: state.page.d_3.count,
+                                labels: state.page[0].d_3.value,
+                                data: state.page[0].d_3.count,
                                 title: 'Les arrondissements avec le plus d\'arbres',
                                 width: 100,
                                 height: 100
@@ -105,8 +105,8 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 callBack: (chart4) => {
                                     actions.registerChart4(chart4)
                                 },
-                                labels: state.page.d_4.value,
-                                data: state.page.d_4.count
+                                labels: state.page[0].d_4.value,
+                                data: state.page[0].d_4.count
                             })
                         ])
                     ]),
@@ -127,8 +127,8 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 callBack: (chart) => {
                                     actions.registerChart5(chart)
                                 },
-                                labels: state.page.d_5.value,
-                                data: state.page.d_5.count,
+                                labels: state.page[0].d_5.value,
+                                data: state.page[0].d_5.count,
                                 title: ' ',
                                 width: 100,
                                 height: 100
@@ -148,8 +148,8 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 callBack: (chart) => {
                                     actions.registerChart6(chart)
                                 },
-                                labels: state.page.d_6.value,
-                                data: state.page.d_6.count,
+                                labels: state.page[0].d_6.value,
+                                data: state.page[0].d_6.count,
                                 title: ' ',
                                 width: 100,
                                 height: 100
@@ -178,7 +178,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                 }),
 
                 h('div', { class: 'row h-onesecond p-2 mt-3, row justify-content-center align-items-center' }, [
-
+                    // LIBELLE
                     h('div', { class: 'col-md-8 px-2 py-3 mt-2' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
@@ -188,8 +188,11 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             Pie({
-                                labels: ['XXe', 'XVe', 'Bois de boulogne', 'Ier', 'IIIe'],
-                                data: [45, 10, 15, 25, 5],
+                                callBack: (chart) => {
+                                    actions.registerChart7(chart)
+                                },
+                                labels: state.page[1].d_7.value,
+                                data: state.page[1].d_7.count,
                                 title: 'Les arrondissements avec le plus d\'arbres',
                                 width: 80,
                                 height: 30
@@ -249,7 +252,7 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
 
                 h('div', { class: 'row h-onethird p-2 mt-3, row justify-content-center align-items-center' }, [
 
-
+                    // LIBELLE
                     h('div', { class: 'col-md-8 px-2 py-3 mt-2' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
@@ -259,8 +262,11 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                                 ]),
                             ]),
                             BarChart({
-                                labels: ['Arbre au 40 ecus', 'Cèdre', 'Chêne', 'Hêtre', 'Marronnier', 'Platane'],
-                                data: [8, 8, 11, 12, 9, 32],
+                                callBack: (chart) => {
+                                    actions.registerChart9(chart)
+                                },
+                                labels: state.page[2].d_9.value,
+                                data: state.page[2].d_9.count,
                                 title: 'Type d\'arbre',
                                 width: 100,
                                 height: 100
@@ -268,17 +274,21 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                         ])
                     ]),
 
+                    // HAUTEUR
                     h('div', { class: 'col-md-8 px-2 mb-3 mt-3' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
                                 CardHeader2({ title: 'Hauteur (m)' }),
                                 h('div', { class: 'dot' }, [
-                                    CardHeader({ infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?', reponse: state.page.d_5.moyenne }), // ici il faut appeler un graphe
+                                    CardHeader({ infos: 'D\' après toi quelle est la hauteur moyenne des arbres à Paris ?', reponse: state.page[0].d_5.moyenne }), // ici il faut appeler un graphe
                                 ]),
                             ]),
                             Line({
-                                labels: ['4m', '7m', '10m', '13m', '16m', '19m', '22m', '25m', '28m', '31m', '34m', '+35m'],
-                                data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
+                                callBack: (chart) => {
+                                    actions.registerChart10(chart)
+                                },
+                                labels: state.page[2].d_10.value,
+                                data: state.page[2].d_10.count,
                                 title: ' ',
                                 width: 100,
                                 height: 100
@@ -286,17 +296,21 @@ h('div', { class: 'd-flex', id: 'wrapper', oncreate: () => { actions.getDataFrom
                         ])
                     ]),
 
+                    // CIRCONFERENCE
                     h('div', { class: 'col-md-8 px-2 mt-3' }, [
                         h('div', { class: 'card card-body' }, [
                             h('div', { class: 'bigDot' }, [
                                 CardHeader2({ title: 'Circonférence (cm)' }),
                                 h('div', { class: 'dot' }, [
-                                    CardHeader({display:1, infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur' }), // ici il faut appeler un graphe
+                                    CardHeader({ display: 1, infos: 'Il peut être intéressant de comparer la circonférence des arbres en fonction de leur hauteur' }), // ici il faut appeler un graphe
                                 ]),
                             ]),
                             Line({
-                                labels: ['50', '100', '150', '200', '250', '300', '350', '400', '450', '500', '550', '600'],
-                                data: [211, 256, 321, 456, 398, 364, 278, 201, 152, 144, 105, 75],
+                                callBack: (chart) => {
+                                    actions.registerChart11(chart)
+                                },
+                                labels: state.page[2].d_11.value,
+                                data: state.page[2].d_11.count,
                                 title: ' ',
                                 width: 100,
                                 height: 100

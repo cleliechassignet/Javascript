@@ -28,7 +28,7 @@ export default {
         return {...state, chart3: chart }
     },
     registerChart4: state => {
-        return {...state}
+        return {...state }
     },
     registerChart5: chart => state => {
         return {...state, chart5: chart }
@@ -36,6 +36,22 @@ export default {
     registerChart6: chart => state => {
         return {...state, chart6: chart }
     },
+    registerChart7: chart => state => {
+        return {...state, chart7: chart }
+    },
+    registerChart8: chart => state => {
+        return {...state, chart8: chart }
+    },
+    registerChart9: chart => state => {
+        return {...state, chart9: chart }
+    },
+    registerChart10: chart => state => {
+        return {...state, chart10: chart }
+    },
+    registerChart11: chart => state => {
+        return {...state, chart11: chart }
+    },
+
 
     getIpFromApi: () => (state, actions) => {
         const request = axios.get('https://api.ipify.org?format=json')
@@ -95,7 +111,8 @@ export default {
                 newKeyLibelle.push(keyLibelle[pos]);
             }
         })
-        newPage = {...newPage, d_2: {...newPage.d_2, value: newKeyLibelle, count: newValueLibelle } };
+        newPage[0] = {...newPage[0], d_2: {...newPage[0].d_2, value: newKeyLibelle, count: newValueLibelle } };
+        newPage[1] = {...newPage[1], d_9: {...newPage[1].d_9, value: newKeyLibelle, count: newValueLibelle } };
 
         //localisation
         list.forEach(e => {
@@ -138,7 +155,9 @@ export default {
         })
 
 
-        newPage = {...newPage, d_3: {...newPage.d_3, value: newKeyLoc, count: newValueLoc } }
+        newPage[0] = {...newPage[0], d_3: {...newPage[0].d_3, value: newKeyLoc, count: newValueLoc } }
+        newPage[1] = {...newPage[1], d_7: {...newPage[1].d_7, value: newKeyLoc, count: newValueLoc } }
+
 
         //domanialite
         list.forEach(e => {
@@ -152,7 +171,9 @@ export default {
         let keyDomaine = Object.keys(domaine)
         let valueDomaine = Object.values(domaine)
 
-        newPage = {...newPage, d_4: {...newPage.d_4, value: keyDomaine, count: valueDomaine } };
+        newPage[0] = {...newPage[0], d_4: {...newPage[0].d_4, value: keyDomaine, count: valueDomaine } };
+        newPage[1] = {...newPage[1], d_8: {...newPage[1].d_8, value: keyDomaine, count: valueDomaine } };
+
 
 
         //hauteur
@@ -206,7 +227,8 @@ export default {
         moyenneHauteur = moyenneHauteur / 10000
 
 
-        newPage = {...newPage, d_5: {...newPage.d_5, value: newKeyHauteur, count: newValueHauteur, moyenne: moyenneHauteur } };
+        newPage[0] = {...newPage[0], d_5: {...newPage[0].d_5, value: newKeyHauteur, count: newValueHauteur, moyenne: moyenneHauteur } };
+        newPage[2] = {...newPage[2], d_10: {...newPage[2].d_10, value: newKeyHauteur, count: newValueHauteur, moyenne: moyenneHauteur } };
 
 
         //circonférence
@@ -249,28 +271,45 @@ export default {
         })
 
 
-        newPage = {...newPage, d_6: {...newPage.d_6, value: newKeyCirconf, count: newValueCirconf } };
+        newPage[0] = {...newPage[0], d_6: {...newPage[0].d_6, value: newKeyCirconf, count: newValueCirconf } };
+        newPage[2] = {...newPage[2], d_11: {...newPage[2].d_11, value: newKeyCirconf, count: newValueCirconf } };
+
+
 
         console.log("pré set")
 
-        state.chart2.data.labels = newPage.d_2.value;
-        state.chart2.data.datasets[0].data = newPage.d_2.count;
-        state.chart3.data.labels = newPage.d_3.value;
-        state.chart3.data.datasets[0].data = newPage.d_3.count;
-        state.chart4.labels = newPage.d_4.value;
-        state.chart4.data = newPage.d_4.count;
-        state.chart5.data.labels = newPage.d_5.value;
-        state.chart5.data.datasets[0].data = newPage.d_5.count;
-        state.chart6.data.labels = newPage.d_6.value;
-        state.chart6.data.datasets[0].data = newPage.d_6.count;
+        state.chart2.data.labels = newPage[0].d_2.value;
+        state.chart2.data.datasets[0].data = newPage[0].d_2.count;
+        state.chart3.data.labels = newPage[0].d_3.value;
+        state.chart3.data.datasets[0].data = newPage[0].d_3.count;
+        state.chart4.labels = newPage[0].d_4.value;
+        state.chart4.data = newPage[0].d_4.count;
+        state.chart5.data.labels = newPage[0].d_5.value;
+        state.chart5.data.datasets[0].data = newPage[0].d_5.count;
+        state.chart6.data.labels = newPage[0].d_6.value;
+        state.chart6.data.datasets[0].data = newPage[0].d_6.count;
+        state.chart7.data.labels = newPage[1].d_7.value;
+        state.chart7.data.datasets[0].data = newPage[1].d_7.count;
+        // state.chart8.data.labels = newPage[1].d_8.value;
+        // state.chart8.data.datasets[0].data = newPage[1].d_8.count;
+        state.chart9.data.labels = newPage[1].d_9.value;
+        state.chart9.data.datasets[0].data = newPage[1].d_9.count;
+        state.chart10.data.labels = newPage[2].d_10.value;
+        state.chart10.data.datasets[0].data = newPage[2].d_10.count;
+        state.chart11.data.labels = newPage[2].d_11.value;
+        state.chart11.data.datasets[0].data = newPage[2].d_11.count;
 
         state.chart2.update({ duration: 800 })
         state.chart3.update({ duration: 800 })
-        //state.chart4.update({ duration: 800 })
+            //state.chart4.update({ duration: 800 })
         state.chart5.update({ duration: 800 })
         state.chart6.update({ duration: 800 })
+        state.chart7.update({ duration: 800 })
+            // state.chart8.update({ duration: 800 })
+        state.chart9.update({ duration: 800 })
+        state.chart10.update({ duration: 800 })
+        state.chart11.update({ duration: 800 })
 
-        console.log(chart)
 
         return {...state, page: newPage };
     }
